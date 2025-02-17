@@ -1,0 +1,68 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/video/video",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/dynamic/dynamic",
+			"style": {
+				"navigationBarTitleText": "关注",
+				"navigationBarBackgroundColor": "#FFF"
+			}
+		},
+		{
+			"path" : "pages/search/search",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/search/searchResult",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#69686d",
+		"selectedColor": "#fe58a4",
+		"backgroundColor": "#fff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home_active.png"
+			},
+			{
+				"pagePath": "pages/dynamic/dynamic",
+				"text": "动态",
+				"iconPath": "static/windmill.png",
+				"selectedIconPath": "static/windmill_active.png"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "我的",
+				"iconPath": "static/bilibili.png",
+				"selectedIconPath": "static/bilibili_active.png"
+			}
+		]
+	}
+}
