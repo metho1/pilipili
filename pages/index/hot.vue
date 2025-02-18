@@ -9,11 +9,14 @@
 		name: 'Hot',
 		data() {
 			return {
-				
+
 			}
 		},
+		created() {
+			console.log('hot');
+		},
 		methods: {
-			
+
 		}
 	}
 </script>

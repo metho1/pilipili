@@ -751,7 +751,6 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
 		border-radius: 0.3125rem 0.3125rem 0 0;
 }
 .video-time[data-v-82c9c6a1] {
@@ -801,4 +800,24 @@
 .container {
 		display: flex;
 		flex-direction: column;
+}
+.bottom-nav-tabs {
+		position: -webkit-sticky;
+		position: sticky;
+		bottom: 0;
+		z-index: 999;
+		background-color: #fff;
+		display: flex;
+		justify-content: space-around;
+		padding: 0.46875rem 0;
+		border-top: 0.0625rem #d5d5d5 solid;
+}
+.tab {
+		font-size: 1rem;
+		color: #69686d;
+}
+.tab.active {
+		color: #fe58a4;
+		font-weight: bold;
+		border-bottom: 0.125rem solid #fe58a4;
 }

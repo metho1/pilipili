@@ -12,7 +12,7 @@
 				
 			}
 		},
-		onLoad(){
+		created(){
 			console.log('live');
 		},
 		methods: {

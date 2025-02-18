@@ -1,18 +1,18 @@
 <!-- 推荐页面 -->
 <template>
-	<!-- 轮播图 -->
-	<uni-card margin="8rpx" padding="0rpx" spacing="0rpx">
-		<swiper style="height: 400rpx;" circular autoplay :interval="2000" indicator-dots indicator-active-color="#fff">
-			<swiper-item v-for="(item, index) in banners" :key="index">
-				<view class="swiper-item">
-					<image :src="item.url" class="banner-image"></image>
-					<view class="text-overlay">{{ item.content }}</view>
-				</view>
-			</swiper-item>
-		</swiper>
-	</uni-card>
 	<!-- 视频列表 -->
-	<scroll-view scroll-y>
+	<scroll-view height="500rpx;" scroll-y @scroll="scrollm(event)" refresher-enabled refre>
+		<!-- 轮播图 -->
+		<uni-card margin="8rpx" padding="0rpx" spacing="0rpx">
+			<swiper style="height: 400rpx;" circular autoplay :interval="2000" indicator-dots indicator-active-color="#fff">
+				<swiper-item v-for="(item, index) in banners" :key="index">
+					<view class="swiper-item">
+						<image :src="item.url" class="banner-image"></image>
+						<view class="text-overlay">{{ item.content }}</view>
+					</view>
+				</swiper-item>
+			</swiper>
+		</uni-card>
 		<view class="video-container">
 			<view v-for="video in videos" :key="video.videoid" class="video-item" @click="gotoVideo(video)">
 				<view class="video-image-container">
@@ -27,7 +27,8 @@
 				</view>
 				<view style="padding: 10rpx 15rpx;">
 					<view class="video-title">{{ video.title }}</view>
-					<view class="video-uploader"><uni-icons type="person" size="30rpx"></uni-icons>&nbsp;{{ video.username }}
+					<view class="video-uploader"><uni-icons type="person"
+							size="30rpx"></uni-icons>&nbsp;{{ video.username }}
 					</view>
 				</view>
 			</view>
@@ -43,6 +44,7 @@
 		name: 'Recommend',
 		data() {
 			return {
+				scrollTop:'',
 				banners: [{
 						url: 'https://th.bing.com//th//id//OIP.jDr1vWoSpnzP7_vgLt-98gHaEE?w=325&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
 						content: '静谧的街道竟暗藏汹涌，真相竟是！'
@@ -56,103 +58,22 @@
 						content: '周边模玩年度盛典，投稿赢大额流量与万元奖金，快来参与吧！'
 					}
 				],
-				videos: [
-					{
-						videoid: 1,
-						title: "今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						userid: 1,
-						username: '芝士阿毛'
-					},
-					{
-						videoid: 2,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 1169,
-						barrages: 5,
-						time: '1:07',
-						userid: 2,
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 3,
-						title: "deepseek对话chatgpt,谁是真人工智能？deepseek对话chatgpt,谁是真人工智能？",
-						cover: "https://th.bing.com//th//id//OIF.Sg5crB34GbbeMPfIUeRYTg?w=287&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 1109000,
-						barrages: 11000,
-						time: '16:12',
-						userid: 3,
-						username: 'DeepSeek小助理'
-					},
-					{
-						videoid: 4,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						userid: 4,
-						username: '神奇的大智'
-					},
-					{
-						videoid: 5,
-						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						userid: 1,
-						username: '芝士阿毛'
-					},
-					{
-						videoid: 6,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 449000,
-						barrages: 242,
-						time: '1:07',
-						userid: 2,
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 7,
-						title: "deepseek对话chatgpt,谁是真人工智能？",
-						cover: "https://th.bing.com//th//id//OIF.Sg5crB34GbbeMPfIUeRYTg?w=287&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 1109000,
-						barrages: 11000,
-						time: '16:12',
-						userid: 3,
-						username: 'DeepSeek小助理'
-					},
-					{
-						videoid: 8,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						userid: 4,
-						username: '神奇的大智'
-					}
-				]
+				videos: []
 			}
 		},
-		onLoad(){
+		created() {
 			console.log('recommend');
-			// this.fetchVideos();
+			this.fetchVideos();
 		},
-		// activated() {
-		//     // 当组件被激活时，调用 onLoad
-		//     this.onLoad();
-		//   },
+		onPageScroll(e) {
+		// e.scrollTop 表示当前页面滚动的距离
+		console.log('页面滚动距离：', e.scrollTop);
+		// 在这里编写你的滚动相关逻辑
+		},
 		methods: {
 			// 获取 fetchVideos 数据
 			async fetchVideos() {
 				try {
-					console.log(2);
 					const res = await uni.request({
 						url: API_BASE_URL + 'videoBuss/getVideoList',
 						method: 'GET',
@@ -161,10 +82,12 @@
 						// }
 					});
 					if (res.statusCode === 200) {
-						console.log(res.data);
 						this.videos = res.data.list;
-						
-						console.log(this.videos);
+						this.videos = this.videos.map(item => {
+						  item.cover = API_BASE_URL + item.cover;
+						  item.time = this.formatTime(item.time);
+						  return item;
+						});
 					} else {
 						console.error('请求失败:', res);
 						uni.showToast({
@@ -192,7 +115,23 @@
 				uni.navigateTo({
 					url: `/pages/video/video?videoid=${video.videoid}`
 				});
+			},
+			formatTime(time){
+				let hour = Math.floor(time/3600);
+				let minute = Math.floor(time/60%60);
+				let second = time%60;
+				minute = minute<10 ? '0'+minute : minute;
+				second = second<10 ? '0'+second : second;
+				return (hour>0 ? hour+':' : '') + minute + ':' + second;
+			},
+			scrollm(event){
+				console.log("2");
+				console.log(event.detail.scrollTop);
+				console.log(event.detail.deltaX);
+				console.log(event.detail.deltaY);
+				// event.detail.scrollTop;
 			}
+			
 		}
 	}
 </script>
@@ -255,7 +194,6 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
 		border-radius: 10rpx 10rpx 0 0;
 	}
 
