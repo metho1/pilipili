@@ -29,7 +29,6 @@
 </script>
 
 <style>
-	
 	.top-bar {
 		display: flex;
 		justify-content: space-between;

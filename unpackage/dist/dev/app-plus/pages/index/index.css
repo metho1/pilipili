@@ -800,6 +800,8 @@
 .container {
 		display: flex;
 		flex-direction: column;
+		height: 39.8125rem;
+		/* height:100%; */
 }
 .bottom-nav-tabs {
 		position: -webkit-sticky;

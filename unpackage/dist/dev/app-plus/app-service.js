@@ -1005,25 +1005,25 @@ if (uni.restoreGlobal) {
     );
   }
   const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-ae4bee67"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-card/components/uni-card/uni-card.vue"]]);
-  const API_BASE_URL = "http://192.168.72.214:8082/";
+  const API_BASE_URL = "http://192.168.181.217:8082/";
   const _imports_0$1 = "/static/views.svg";
   const _imports_1$1 = "/static/barrages.svg";
   const _sfc_main$e = {
     name: "Recommend",
     data() {
       return {
-        scrollTop: "",
+        page: 0,
         banners: [
           {
-            url: "https://th.bing.com//th//id//OIP.jDr1vWoSpnzP7_vgLt-98gHaEE?w=325&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            url: API_BASE_URL + "covers/6.jpg",
             content: "静谧的街道竟暗藏汹涌，真相竟是！"
           },
           {
-            url: "https://th.bing.com//th//id//OIP.oyA5CToKH8-hNNi8J0jUvAHaEK?w=309&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            url: API_BASE_URL + "covers/4.jpg",
             content: "点击开启你的异世界冒险之旅！"
           },
           {
-            url: "https://th.bing.com//th//id//OIP.dn7iT8uhhGO8OjzUC4wmYwHaEG?w=255&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            url: API_BASE_URL + "covers/5.jpg",
             content: "周边模玩年度盛典，投稿赢大额流量与万元奖金，快来参与吧！"
           }
         ],
@@ -1031,39 +1031,41 @@ if (uni.restoreGlobal) {
       };
     },
     created() {
-      formatAppLog("log", "at pages/index/recommend.vue:65", "recommend");
+      formatAppLog("log", "at pages/index/recommend.vue:63", "recommend");
       this.fetchVideos();
-    },
-    onPageScroll(e) {
-      formatAppLog("log", "at pages/index/recommend.vue:70", "页面滚动距离：", e.scrollTop);
     },
     methods: {
       // 获取 fetchVideos 数据
       async fetchVideos() {
         try {
+          this.page++;
+          formatAppLog("log", "at pages/index/recommend.vue:71", this.page);
           const res = await uni.request({
             url: API_BASE_URL + "videoBuss/getVideoList",
-            method: "GET"
-            // data: {
-            // 	videoid: this.videoid
-            // }
+            method: "GET",
+            data: {
+              page: this.page
+            }
           });
           if (res.statusCode === 200) {
-            this.videos = res.data.list;
-            this.videos = this.videos.map((item) => {
+            let newvideos = res.data.list;
+            newvideos = newvideos.map((item) => {
               item.cover = API_BASE_URL + item.cover;
               item.time = this.formatTime(item.time);
               return item;
             });
+            this.videos = this.videos.concat(newvideos);
           } else {
-            formatAppLog("error", "at pages/index/recommend.vue:92", "请求失败:", res);
+            formatAppLog("error", "at pages/index/recommend.vue:88", "请求失败:", res);
+            this.page--;
             uni.showToast({
               title: "数据加载失败",
               icon: "none"
             });
           }
         } catch (error) {
-          formatAppLog("error", "at pages/index/recommend.vue:99", "网络请求错误:", error);
+          this.page--;
+          formatAppLog("error", "at pages/index/recommend.vue:97", "网络请求错误:", error);
           uni.showToast({
             title: "网络请求失败",
             icon: "none"
@@ -1090,12 +1092,6 @@ if (uni.restoreGlobal) {
         minute = minute < 10 ? "0" + minute : minute;
         second = second < 10 ? "0" + second : second;
         return (hour > 0 ? hour + ":" : "") + minute + ":" + second;
-      },
-      scrollm(event) {
-        formatAppLog("log", "at pages/index/recommend.vue:128", "2");
-        formatAppLog("log", "at pages/index/recommend.vue:129", event.detail.scrollTop);
-        formatAppLog("log", "at pages/index/recommend.vue:130", event.detail.deltaX);
-        formatAppLog("log", "at pages/index/recommend.vue:131", event.detail.deltaY);
       }
     }
   };
@@ -1106,140 +1102,130 @@ if (uni.restoreGlobal) {
       vue.Fragment,
       null,
       [
-        vue.createCommentVNode(" 视频列表 "),
-        vue.createElementVNode(
-          "scroll-view",
-          {
-            height: "500rpx;",
-            "scroll-y": "",
-            onScroll: _cache[0] || (_cache[0] = ($event) => $options.scrollm(_ctx.event)),
-            "refresher-enabled": "",
-            refre: ""
-          },
-          [
-            vue.createCommentVNode(" 轮播图 "),
-            vue.createVNode(_component_uni_card, {
-              margin: "8rpx",
-              padding: "0rpx",
-              spacing: "0rpx"
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("swiper", {
-                  style: { "height": "400rpx" },
-                  circular: "",
-                  autoplay: "",
-                  interval: 2e3,
-                  "indicator-dots": "",
-                  "indicator-active-color": "#fff"
-                }, [
-                  (vue.openBlock(true), vue.createElementBlock(
-                    vue.Fragment,
-                    null,
-                    vue.renderList($data.banners, (item, index) => {
-                      return vue.openBlock(), vue.createElementBlock("swiper-item", { key: index }, [
-                        vue.createElementVNode("view", { class: "swiper-item" }, [
-                          vue.createElementVNode("image", {
-                            src: item.url,
-                            class: "banner-image"
-                          }, null, 8, ["src"]),
-                          vue.createElementVNode(
-                            "view",
-                            { class: "text-overlay" },
-                            vue.toDisplayString(item.content),
-                            1
-                            /* TEXT */
-                          )
-                        ])
-                      ]);
-                    }),
-                    128
-                    /* KEYED_FRAGMENT */
-                  ))
-                ])
-              ]),
-              _: 1
-              /* STABLE */
-            }),
-            vue.createElementVNode("view", { class: "video-container" }, [
+        vue.createCommentVNode(" 轮播图 "),
+        vue.createVNode(_component_uni_card, {
+          margin: "8rpx",
+          padding: "0rpx",
+          spacing: "0rpx"
+        }, {
+          default: vue.withCtx(() => [
+            vue.createElementVNode("swiper", {
+              style: { "height": "400rpx" },
+              circular: "",
+              autoplay: "",
+              interval: 2e3,
+              "indicator-dots": "",
+              "indicator-active-color": "#fff"
+            }, [
               (vue.openBlock(true), vue.createElementBlock(
                 vue.Fragment,
                 null,
-                vue.renderList($data.videos, (video) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    key: video.videoid,
-                    class: "video-item",
-                    onClick: ($event) => $options.gotoVideo(video)
-                  }, [
-                    vue.createElementVNode("view", { class: "video-image-container" }, [
+                vue.renderList($data.banners, (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("swiper-item", { key: index }, [
+                    vue.createElementVNode("view", { class: "swiper-item" }, [
                       vue.createElementVNode("image", {
-                        src: video.cover,
-                        class: "video-image"
+                        src: item.url,
+                        class: "banner-image",
+                        "lazy-load": "true"
                       }, null, 8, ["src"]),
                       vue.createElementVNode(
                         "view",
-                        { class: "video-time" },
-                        vue.toDisplayString(video.time),
+                        { class: "text-overlay" },
+                        vue.toDisplayString(item.content),
                         1
                         /* TEXT */
-                      ),
-                      vue.createElementVNode("view", { class: "video-stats" }, [
-                        vue.createElementVNode("image", {
-                          src: _imports_0$1,
-                          class: "stats-icon"
-                        }),
-                        vue.createElementVNode(
-                          "text",
-                          { class: "views_barrages" },
-                          vue.toDisplayString($options.format(video.views)),
-                          1
-                          /* TEXT */
-                        ),
-                        vue.createElementVNode("image", {
-                          src: _imports_1$1,
-                          class: "stats-icon"
-                        }),
-                        vue.createElementVNode(
-                          "text",
-                          { class: "views_barrages" },
-                          vue.toDisplayString($options.format(video.barrages)),
-                          1
-                          /* TEXT */
-                        )
-                      ])
-                    ]),
-                    vue.createElementVNode("view", { style: { "padding": "10rpx 15rpx" } }, [
-                      vue.createElementVNode(
-                        "view",
-                        { class: "video-title" },
-                        vue.toDisplayString(video.title),
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode("view", { class: "video-uploader" }, [
-                        vue.createVNode(_component_uni_icons, {
-                          type: "person",
-                          size: "30rpx"
-                        }),
-                        vue.createTextVNode(
-                          " " + vue.toDisplayString(video.username),
-                          1
-                          /* TEXT */
-                        )
-                      ])
+                      )
                     ])
-                  ], 8, ["onClick"]);
+                  ]);
                 }),
                 128
                 /* KEYED_FRAGMENT */
               ))
             ])
-          ],
-          32
-          /* NEED_HYDRATION */
-        )
+          ]),
+          _: 1
+          /* STABLE */
+        }),
+        vue.createCommentVNode(" 视频列表 "),
+        vue.createElementVNode("view", { class: "video-container" }, [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($data.videos, (video) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                key: video.videoid,
+                class: "video-item",
+                onClick: ($event) => $options.gotoVideo(video)
+              }, [
+                vue.createElementVNode("view", { class: "video-image-container" }, [
+                  vue.createElementVNode("image", {
+                    src: video.cover,
+                    class: "video-image",
+                    "lazy-load": "true"
+                  }, null, 8, ["src"]),
+                  vue.createElementVNode(
+                    "view",
+                    { class: "video-time" },
+                    vue.toDisplayString(video.time),
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("view", { class: "video-stats" }, [
+                    vue.createElementVNode("image", {
+                      src: _imports_0$1,
+                      class: "stats-icon",
+                      "lazy-load": "true"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      { class: "views_barrages" },
+                      vue.toDisplayString($options.format(video.views)),
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: _imports_1$1,
+                      class: "stats-icon",
+                      "lazy-load": "true"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      { class: "views_barrages" },
+                      vue.toDisplayString($options.format(video.barrages)),
+                      1
+                      /* TEXT */
+                    )
+                  ])
+                ]),
+                vue.createElementVNode("view", { style: { "padding": "10rpx 15rpx" } }, [
+                  vue.createElementVNode(
+                    "view",
+                    { class: "video-title" },
+                    vue.toDisplayString(video.title),
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("view", { class: "video-uploader" }, [
+                    vue.createVNode(_component_uni_icons, {
+                      type: "person",
+                      size: "30rpx"
+                    }),
+                    vue.createTextVNode(
+                      " " + vue.toDisplayString(video.username),
+                      1
+                      /* TEXT */
+                    )
+                  ])
+                ])
+              ], 8, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ])
       ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+      64
+      /* STABLE_FRAGMENT */
     );
   }
   const Recommend = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-82c9c6a1"], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/recommend.vue"]]);
@@ -1297,7 +1283,6 @@ if (uni.restoreGlobal) {
     data() {
       return {
         currentTab: "recommend",
-        // bottom-currentTab: "home",
         tabs: [
           {
             text: "直播",
@@ -1315,31 +1300,16 @@ if (uni.restoreGlobal) {
             text: "分区",
             value: "zones"
           }
-        ]
-        // bottom-tabs: [{
-        // 		text: "首页",
-        // 		value: "home"
-        // 	},
-        // 	{
-        // 		text: "推荐",
-        // 		value: "recommend"
-        // 	},
-        // 	{
-        // 		text: "热门",
-        // 		value: "hot"
-        // 	},
-        // 	{
-        // 		text: "分区",
-        // 		value: "zones"
-        // 	}
-        // ]
+        ],
+        isLoading: false,
+        // 防止多次请求，避免请求过快
+        isLoadingTop: true,
+        // 启用下拉刷新功能
+        isTriggeredTop: false
+        // 初始时不显示下拉刷新动画
       };
     },
     onLoad() {
-      formatAppLog("log", "at pages/index/index.vue:76", 1);
-    },
-    onPageScroll(e) {
-      formatAppLog("log", "at pages/index/index.vue:80", "页面滚动距离：", e.scrollTop);
     },
     computed: {
       currentComponent() {
@@ -1349,13 +1319,41 @@ if (uni.restoreGlobal) {
     methods: {
       handleTabChange(tab) {
         this.currentTab = tab;
-        formatAppLog("log", "at pages/index/index.vue:97", "当前Tab:", this.currentTab);
+        formatAppLog("log", "at pages/index/index.vue:73", "当前Tab:", this.currentTab);
       },
-      scrollm(event) {
-        formatAppLog("log", "at pages/index/index.vue:100", "2");
-        formatAppLog("log", "at pages/index/index.vue:101", event.detail.scrollTop);
-        formatAppLog("log", "at pages/index/index.vue:102", event.detail.deltaX);
-        formatAppLog("log", "at pages/index/index.vue:103", event.detail.deltaY);
+      fetchData() {
+        this.isLoading = true;
+        formatAppLog("log", "at pages/index/index.vue:77", "fetch");
+        const childComponent = this.$refs.currentComponentRef;
+        if (childComponent && typeof childComponent.fetchVideos === "function") {
+          childComponent.fetchVideos().then(() => {
+            this.isLoading = false;
+          }).catch(() => this.isLoading = false);
+        }
+      },
+      handleRefresher() {
+        formatAppLog("log", "at pages/index/index.vue:86", "顶部下拉刷新s>>>", this.isLoadingTop, this.isTriggeredTop);
+        if (this.isLoading)
+          return;
+        this.isLoadingTop = true;
+        this.isTriggeredTop = true;
+        this.isLoading = true;
+        formatAppLog("log", "at pages/index/index.vue:91", "fetch");
+        const childComponent = this.$refs.currentComponentRef;
+        if (childComponent && typeof childComponent.fetchVideos === "function") {
+          childComponent.videos = [];
+          childComponent.fetchVideos().then(() => {
+            formatAppLog("log", "at pages/index/index.vue:97", "数据加载成功");
+          }).catch(() => {
+            formatAppLog("error", "at pages/index/index.vue:100", "数据加载失败");
+          }).finally(() => {
+            this.isLoading = false;
+            this.isTriggeredTop = false;
+          });
+        } else {
+          this.isLoading = false;
+          this.isTriggeredTop = false;
+        }
       }
     }
   };
@@ -1377,24 +1375,23 @@ if (uni.restoreGlobal) {
           onTabChange: $options.handleTabChange
         }, null, 8, ["activeTab", "tabs", "onTabChange"]),
         vue.createCommentVNode(" 主要内容区域 "),
-        vue.createElementVNode(
-          "scroll-view",
-          {
-            "scroll-y": "",
-            class: "container",
-            onScroll: _cache[0] || (_cache[0] = ($event) => $options.scrollm(_ctx.event))
-          },
-          [
-            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent($options.currentComponent)))
-          ],
-          32
-          /* NEED_HYDRATION */
-        ),
-        vue.createCommentVNode(" 底部导航 "),
-        vue.createCommentVNode(` 	<view class="bottom-nav-tabs">\r
-		<text v-for="(tab,index) in bottom-tabs" :key="index" :class="['tab',activeTab === tab.value ? 'active' : '']"\r
-			@click="switchTab(tab.value)">{{ tab.text }}</text>\r
-	</view> `)
+        vue.createElementVNode("scroll-view", {
+          "scroll-y": "",
+          class: "container",
+          onScrolltolower: _cache[0] || (_cache[0] = (...args) => $options.fetchData && $options.fetchData(...args)),
+          "lower-threshold": "200rpx",
+          "refresher-enabled": $data.isLoadingTop,
+          "refresher-triggered": $data.isTriggeredTop,
+          onRefresherrefresh: _cache[1] || (_cache[1] = (...args) => $options.handleRefresher && $options.handleRefresher(...args))
+        }, [
+          (vue.openBlock(), vue.createBlock(
+            vue.resolveDynamicComponent($options.currentComponent),
+            { ref: "currentComponentRef" },
+            null,
+            512
+            /* NEED_PATCH */
+          ))
+        ], 40, ["refresher-enabled", "refresher-triggered"])
       ],
       64
       /* STABLE_FRAGMENT */
@@ -1814,7 +1811,10 @@ if (uni.restoreGlobal) {
   };
   function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
-    return vue.openBlock(), vue.createElementBlock("scroll-view", { "scroll-y": "" }, [
+    return vue.openBlock(), vue.createElementBlock("scroll-view", {
+      "scroll-y": "",
+      style: { "height": "1396rpx" }
+    }, [
       vue.createCommentVNode(' @scrolltolower="loadMoreVideos" '),
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -2662,6 +2662,42 @@ if (uni.restoreGlobal) {
           },
           {
             videoid: 12,
+            title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+            cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 16e4,
+            barrages: 3230,
+            time: "0:15",
+            username: "芝士阿毛"
+          },
+          {
+            videoid: 13,
+            title: "128秒看完《哪吒2》",
+            cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 628e3,
+            barrages: 592,
+            time: "2:08",
+            username: "神奇的大智"
+          },
+          {
+            videoid: 14,
+            title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+            cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 16e4,
+            barrages: 3230,
+            time: "0:15",
+            username: "芝士阿毛"
+          },
+          {
+            videoid: 15,
+            title: "128秒看完《哪吒2》",
+            cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 628e3,
+            barrages: 592,
+            time: "2:08",
+            username: "神奇的大智"
+          },
+          {
+            videoid: 16,
             title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
             cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
             views: 16e4,

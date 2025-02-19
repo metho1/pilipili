@@ -1,6 +1,6 @@
 <!-- 相关视频推荐 -->
 <template>
-	<scroll-view scroll-y> <!-- @scrolltolower="loadMoreVideos" -->
+	<scroll-view scroll-y style="height: 1396rpx;"> <!-- @scrolltolower="loadMoreVideos" -->
 		<view v-for="related in relatedVideos" :key="related.videoid" class="related-item"
 			@click="gotoVideo(related)">
 			<!-- 视频封面 -->
@@ -59,7 +59,7 @@
 		width: 100%;
 		display: flex;
 		padding: 20rpx 0rpx;
-		border-top: 2rpx #d5d5d5 solid;
+		border-bottom: 2rpx #d5d5d5 solid;
 	}
 
 	.related-image-container {

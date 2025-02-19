@@ -712,7 +712,7 @@
 		width: 100%;
 		display: flex;
 		padding: 0.625rem 0;
-		border-top: 0.0625rem #d5d5d5 solid;
+		border-bottom: 0.0625rem #d5d5d5 solid;
 }
 .related-image-container[data-v-df0b614b] {
 		position: relative;
