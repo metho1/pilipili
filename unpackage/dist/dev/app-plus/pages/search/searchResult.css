@@ -616,6 +616,10 @@
 		font-weight: bold;
 		border-bottom: 0.125rem solid #fe58a4;
 }
+.stats-icon[data-v-fdb8fc5f] {
+		width: 0.9375rem;
+		height: 0.9375rem;
+}
 
 
 .container {
@@ -648,4 +652,28 @@
 		color: #fe58a4;
 		font-size: 0.9375rem;
 		font-weight: bold;
+}
+.filter {
+		background-color: #fff;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		padding: 0.3125rem;
+		z-index: 999;
+}
+.zone {
+		width: 3.125rem;
+		padding: 0.3125rem;
+		border-radius: 0.3125rem;
+		background-color: #f7f7f7;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		color: #69686d;
+		font-size: 0.75rem;
+		white-space: nowrap;
+}
+.active {
+		color: #fe58a4;
 }

@@ -1,28 +1,25 @@
 <!-- 相关视频推荐 -->
 <template>
-	<scroll-view scroll-y style="height: 1396rpx;"> <!-- @scrolltolower="loadMoreVideos" -->
-		<view v-for="related in relatedVideos" :key="related.videoid" class="related-item"
-			@click="gotoVideo(related)">
-			<!-- 视频封面 -->
-			<view class="related-image-container">
-				<image :src="related.cover" class="related-image"></image>
-				<view class="related-time">{{ related.time }}</view>
+	<view v-for="related in relatedVideos" :key="related.videoid" class="related-item" @click="gotoVideo(related)">
+		<!-- 视频封面 -->
+		<view class="related-image-container">
+			<image :src="related.cover" class="related-image"></image>
+			<view class="related-time">{{ related.time }}</view>
+		</view>
+		<!-- 视频信息 -->
+		<view class="related-stats">
+			<text class="related-title">{{ related.title }}</text>
+			<view class="related-username">
+				<uni-icons type="person" size="30rpx"></uni-icons>&nbsp;{{ related.username }}
 			</view>
-			<!-- 视频信息 -->
-			<view class="related-stats">
-				<text class="related-title">{{ related.title }}</text>
-				<view class="related-username">
-					<uni-icons type="person" size="30rpx"></uni-icons>&nbsp;{{ related.username }}
-				</view>
-				<view style="display:flex;align-items:center;">
-					<image src="@/static/views_gray.svg" class="related-icon"></image>
-					<text class="related-views">{{ format(related.views) }}</text>
-					<image src="@/static/barrages_gray.svg" class="related-icon"></image>
-					<text class="related-barrages">{{ format(related.barrages) }}</text>
-				</view>
+			<view style="display:flex;align-items:center;">
+				<image src="@/static/views_gray.svg" class="related-icon"></image>
+				<text class="related-views">{{ format(related.views) }}</text>
+				<image src="@/static/barrages_gray.svg" class="related-icon"></image>
+				<text class="related-barrages">{{ format(related.barrages) }}</text>
 			</view>
 		</view>
-	</scroll-view>
+	</view>
 </template>
 
 <script>
@@ -33,7 +30,7 @@
 		},
 		data() {
 			return {
-				
+
 			};
 		},
 		methods: {

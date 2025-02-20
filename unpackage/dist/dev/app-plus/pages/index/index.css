@@ -575,6 +575,10 @@
 		font-weight: bold;
 		border-bottom: 0.125rem solid #fe58a4;
 }
+.stats-icon[data-v-fdb8fc5f] {
+		width: 0.9375rem;
+		height: 0.9375rem;
+}
 
 /**
  * 这里是uni-app内置的常用样式变量
@@ -801,7 +805,6 @@
 		display: flex;
 		flex-direction: column;
 		height: 39.8125rem;
-		/* height:100%; */
 }
 .bottom-nav-tabs {
 		position: -webkit-sticky;

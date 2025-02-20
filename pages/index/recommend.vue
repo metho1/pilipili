@@ -38,21 +38,22 @@
 	import {
 		API_BASE_URL
 	} from '@/config/api.js';
+	import { API_RESOURCES_URL } from '@/config/api.js';
 	export default {
 		name: 'Recommend',
 		data() {
 			return {
 				page: 0,
 				banners: [{
-						url: API_BASE_URL + 'covers/6.jpg',
+						url: API_RESOURCES_URL + 'covers/6.jpg',
 						content: '静谧的街道竟暗藏汹涌，真相竟是！'
 					},
 					{
-						url: API_BASE_URL + 'covers/4.jpg',
+						url: API_RESOURCES_URL + 'covers/4.jpg',
 						content: '点击开启你的异世界冒险之旅！'
 					},
 					{
-						url: API_BASE_URL + 'covers/5.jpg',
+						url: API_RESOURCES_URL + 'covers/5.jpg',
 						content: '周边模玩年度盛典，投稿赢大额流量与万元奖金，快来参与吧！'
 					}
 				],
@@ -79,7 +80,7 @@
 					if (res.statusCode === 200) {
 						let newvideos = res.data.list;
 						newvideos = newvideos.map(item => {
-							item.cover = API_BASE_URL + item.cover;
+							item.cover = API_RESOURCES_URL + item.cover;
 							item.time = this.formatTime(item.time);
 							return item;
 						});

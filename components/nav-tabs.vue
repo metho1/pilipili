@@ -2,7 +2,12 @@
 <template>
 	<view class="nav-tabs">
 		<text v-for="(tab,index) in tabs" :key="index" :class="['tab',activeTab === tab.value ? 'active' : '']"
-			@click="switchTab(tab.value)">{{ tab.text }}</text>
+			@click="switchTab(tab.value)">
+			<template v-if="tab.value === 'filter'">
+				<image src="@/static/filter1.svg" class="stats-icon"></image>
+			</template>
+			<template v-else>{{ tab.text }}</template>
+			</text>
 	</view>
 </template>
 
@@ -15,12 +20,14 @@
 		},
 		data() {
 			return {
+
 			};
 		},
 		methods: {
 			switchTab(tab) {
 				this.$emit("tabChange", tab);
 			}
+			
 		}
 	}
 </script>
@@ -46,5 +53,10 @@
 		color: #fe58a4;
 		font-weight: bold;
 		border-bottom: 4rpx solid #fe58a4;
+	}
+	
+	.stats-icon {
+		width: 30rpx;
+		height: 30rpx;
 	}
 </style>

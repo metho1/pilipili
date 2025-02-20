@@ -698,7 +698,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$i = {
+  const _sfc_main$j = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -752,7 +752,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -767,9 +767,9 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-d31e1c47"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
-  const _imports_0$2 = "/static/avatar.jpg";
-  const _sfc_main$h = {
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-d31e1c47"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+  const _imports_0$3 = "/static/avatar.jpg";
+  const _sfc_main$i = {
     name: "TopBar",
     data() {
       return {};
@@ -783,12 +783,12 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "top-bar" }, [
       vue.createElementVNode("image", {
         class: "avatar",
-        src: _imports_0$2
+        src: _imports_0$3
       }),
       vue.createElementVNode("view", {
         class: "custom-search-bar",
@@ -807,8 +807,9 @@ if (uni.restoreGlobal) {
       })
     ]);
   }
-  const TopBar = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-10c29057"], ["__file", "D:/hbuilderx/Projects/pilipili/components/top-bar.vue"]]);
-  const _sfc_main$g = {
+  const TopBar = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-10c29057"], ["__file", "D:/hbuilderx/Projects/pilipili/components/top-bar.vue"]]);
+  const _imports_0$2 = "/static/filter1.svg";
+  const _sfc_main$h = {
     name: "NavTabs",
     props: {
       activeTab: String,
@@ -824,7 +825,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "nav-tabs" }, [
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -834,15 +835,33 @@ if (uni.restoreGlobal) {
             key: index,
             class: vue.normalizeClass(["tab", $props.activeTab === tab.value ? "active" : ""]),
             onClick: ($event) => $options.switchTab(tab.value)
-          }, vue.toDisplayString(tab.text), 11, ["onClick"]);
+          }, [
+            tab.value === "filter" ? (vue.openBlock(), vue.createElementBlock("image", {
+              key: 0,
+              src: _imports_0$2,
+              class: "stats-icon"
+            })) : (vue.openBlock(), vue.createElementBlock(
+              vue.Fragment,
+              { key: 1 },
+              [
+                vue.createTextVNode(
+                  vue.toDisplayString(tab.text),
+                  1
+                  /* TEXT */
+                )
+              ],
+              64
+              /* STABLE_FRAGMENT */
+            ))
+          ], 10, ["onClick"]);
         }),
         128
         /* KEYED_FRAGMENT */
       ))
     ]);
   }
-  const NavTabs = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-fdb8fc5f"], ["__file", "D:/hbuilderx/Projects/pilipili/components/nav-tabs.vue"]]);
-  const _sfc_main$f = {
+  const NavTabs = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__scopeId", "data-v-fdb8fc5f"], ["__file", "D:/hbuilderx/Projects/pilipili/components/nav-tabs.vue"]]);
+  const _sfc_main$g = {
     name: "UniCard",
     emits: ["click"],
     props: {
@@ -903,7 +922,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -1004,26 +1023,27 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-ae4bee67"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-card/components/uni-card/uni-card.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__scopeId", "data-v-ae4bee67"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-card/components/uni-card/uni-card.vue"]]);
   const API_BASE_URL = "http://192.168.181.217:8082/";
+  const API_RESOURCES_URL = "http://www.setrain.top/";
   const _imports_0$1 = "/static/views.svg";
   const _imports_1$1 = "/static/barrages.svg";
-  const _sfc_main$e = {
+  const _sfc_main$f = {
     name: "Recommend",
     data() {
       return {
         page: 0,
         banners: [
           {
-            url: API_BASE_URL + "covers/6.jpg",
+            url: API_RESOURCES_URL + "covers/6.jpg",
             content: "静谧的街道竟暗藏汹涌，真相竟是！"
           },
           {
-            url: API_BASE_URL + "covers/4.jpg",
+            url: API_RESOURCES_URL + "covers/4.jpg",
             content: "点击开启你的异世界冒险之旅！"
           },
           {
-            url: API_BASE_URL + "covers/5.jpg",
+            url: API_RESOURCES_URL + "covers/5.jpg",
             content: "周边模玩年度盛典，投稿赢大额流量与万元奖金，快来参与吧！"
           }
         ],
@@ -1031,7 +1051,7 @@ if (uni.restoreGlobal) {
       };
     },
     created() {
-      formatAppLog("log", "at pages/index/recommend.vue:63", "recommend");
+      formatAppLog("log", "at pages/index/recommend.vue:64", "recommend");
       this.fetchVideos();
     },
     methods: {
@@ -1039,7 +1059,7 @@ if (uni.restoreGlobal) {
       async fetchVideos() {
         try {
           this.page++;
-          formatAppLog("log", "at pages/index/recommend.vue:71", this.page);
+          formatAppLog("log", "at pages/index/recommend.vue:72", this.page);
           const res = await uni.request({
             url: API_BASE_URL + "videoBuss/getVideoList",
             method: "GET",
@@ -1050,13 +1070,13 @@ if (uni.restoreGlobal) {
           if (res.statusCode === 200) {
             let newvideos = res.data.list;
             newvideos = newvideos.map((item) => {
-              item.cover = API_BASE_URL + item.cover;
+              item.cover = API_RESOURCES_URL + item.cover;
               item.time = this.formatTime(item.time);
               return item;
             });
             this.videos = this.videos.concat(newvideos);
           } else {
-            formatAppLog("error", "at pages/index/recommend.vue:88", "请求失败:", res);
+            formatAppLog("error", "at pages/index/recommend.vue:89", "请求失败:", res);
             this.page--;
             uni.showToast({
               title: "数据加载失败",
@@ -1065,7 +1085,7 @@ if (uni.restoreGlobal) {
           }
         } catch (error) {
           this.page--;
-          formatAppLog("error", "at pages/index/recommend.vue:97", "网络请求错误:", error);
+          formatAppLog("error", "at pages/index/recommend.vue:98", "网络请求错误:", error);
           uni.showToast({
             title: "网络请求失败",
             icon: "none"
@@ -1095,9 +1115,9 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_card = resolveEasycom(vue.resolveDynamicComponent("uni-card"), __easycom_0$1);
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_card = resolveEasycom(vue.resolveDynamicComponent("uni-card"), __easycom_0);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -1228,8 +1248,8 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT */
     );
   }
-  const Recommend = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-82c9c6a1"], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/recommend.vue"]]);
-  const _sfc_main$d = {
+  const Recommend = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-82c9c6a1"], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/recommend.vue"]]);
+  const _sfc_main$e = {
     name: "Hot",
     data() {
       return {};
@@ -1239,11 +1259,11 @@ if (uni.restoreGlobal) {
     },
     methods: {}
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " hot ");
   }
-  const Hot = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/hot.vue"]]);
-  const _sfc_main$c = {
+  const Hot = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/hot.vue"]]);
+  const _sfc_main$d = {
     name: "Live",
     data() {
       return {};
@@ -1253,11 +1273,11 @@ if (uni.restoreGlobal) {
     },
     methods: {}
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " live ");
   }
-  const Live = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/live.vue"]]);
-  const _sfc_main$b = {
+  const Live = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/live.vue"]]);
+  const _sfc_main$c = {
     name: "Zones",
     data() {
       return {};
@@ -1267,11 +1287,11 @@ if (uni.restoreGlobal) {
     },
     methods: {}
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " zones ");
   }
-  const Zones = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/zones.vue"]]);
-  const _sfc_main$a = {
+  const Zones = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/zones.vue"]]);
+  const _sfc_main$b = {
     components: {
       TopBar,
       NavTabs,
@@ -1319,11 +1339,11 @@ if (uni.restoreGlobal) {
     methods: {
       handleTabChange(tab) {
         this.currentTab = tab;
-        formatAppLog("log", "at pages/index/index.vue:73", "当前Tab:", this.currentTab);
+        formatAppLog("log", "at pages/index/index.vue:74", "当前Tab:", this.currentTab);
       },
       fetchData() {
         this.isLoading = true;
-        formatAppLog("log", "at pages/index/index.vue:77", "fetch");
+        formatAppLog("log", "at pages/index/index.vue:78", "fetch");
         const childComponent = this.$refs.currentComponentRef;
         if (childComponent && typeof childComponent.fetchVideos === "function") {
           childComponent.fetchVideos().then(() => {
@@ -1332,20 +1352,20 @@ if (uni.restoreGlobal) {
         }
       },
       handleRefresher() {
-        formatAppLog("log", "at pages/index/index.vue:86", "顶部下拉刷新s>>>", this.isLoadingTop, this.isTriggeredTop);
+        formatAppLog("log", "at pages/index/index.vue:87", "顶部下拉刷新s>>>", this.isLoadingTop, this.isTriggeredTop);
         if (this.isLoading)
           return;
         this.isLoadingTop = true;
         this.isTriggeredTop = true;
         this.isLoading = true;
-        formatAppLog("log", "at pages/index/index.vue:91", "fetch");
+        formatAppLog("log", "at pages/index/index.vue:92", "fetch");
         const childComponent = this.$refs.currentComponentRef;
         if (childComponent && typeof childComponent.fetchVideos === "function") {
           childComponent.videos = [];
           childComponent.fetchVideos().then(() => {
-            formatAppLog("log", "at pages/index/index.vue:97", "数据加载成功");
+            formatAppLog("log", "at pages/index/index.vue:98", "数据加载成功");
           }).catch(() => {
-            formatAppLog("error", "at pages/index/index.vue:100", "数据加载失败");
+            formatAppLog("error", "at pages/index/index.vue:101", "数据加载失败");
           }).finally(() => {
             this.isLoading = false;
             this.isTriggeredTop = false;
@@ -1357,7 +1377,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_StatusBar = vue.resolveComponent("StatusBar");
     const _component_TopBar = vue.resolveComponent("TopBar");
     const _component_NavTabs = vue.resolveComponent("NavTabs");
@@ -1397,14 +1417,14 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT */
     );
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/index.vue"]]);
-  const _sfc_main$9 = {
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__file", "D:/hbuilderx/Projects/pilipili/pages/index/index.vue"]]);
+  const _sfc_main$a = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_StatusBar = vue.resolveComponent("StatusBar");
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
@@ -1417,7 +1437,578 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT */
     );
   }
-  const PagesProfileProfile = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__file", "D:/hbuilderx/Projects/pilipili/pages/profile/profile.vue"]]);
+  const PagesProfileProfile = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__file", "D:/hbuilderx/Projects/pilipili/pages/profile/profile.vue"]]);
+  const block0 = (Comp) => {
+    (Comp.$renderjs || (Comp.$renderjs = [])).push("ybVideo");
+    (Comp.$renderjsModules || (Comp.$renderjsModules = {}))["ybVideo"] = "0020cf84";
+  };
+  const _sfc_main$9 = {
+    props: {
+      dataId: {
+        type: String,
+        default() {
+          let mydate = /* @__PURE__ */ new Date();
+          return "cms" + mydate.getMinutes() + mydate.getSeconds() + mydate.getMilliseconds() + Math.round(Math.random() * 1e4);
+        }
+      },
+      //播放链接
+      src: {
+        type: String,
+        default: ""
+      },
+      //标题
+      title: {
+        type: String,
+        default: ""
+      },
+      //封面
+      poster: {
+        type: String,
+        default: ""
+      },
+      //视频格式
+      formats: {
+        type: String,
+        default: "auto"
+      },
+      //时长（单位：s）
+      duration: {
+        type: Number,
+        default: 0
+      },
+      //静音
+      muted: {
+        type: Boolean,
+        default: false
+      },
+      //自动播放
+      autoplay: {
+        type: Boolean,
+        default: false
+      },
+      //初始播放时间 (单位是秒)
+      initialTime: {
+        type: Number,
+        default: 0
+      },
+      //是否循环播放
+      loop: {
+        type: Boolean,
+        default: false
+      },
+      //预加载属性
+      preload: {
+        type: String,
+        default: "auto"
+        //auto/meta/none
+      },
+      //设置菜单
+      settings: {
+        type: String,
+        default: "all"
+      },
+      //控制栏
+      controls: {
+        type: Boolean,
+        default: true
+      },
+      //展示进度条
+      progressShow: {
+        type: Boolean,
+        default: true
+      },
+      //显示上一个视频按钮
+      prevBtnShow: {
+        type: Boolean,
+        default: false
+      },
+      //显示下一个视频按钮
+      nextBtnShow: {
+        type: Boolean,
+        default: false
+      },
+      //显示播放按钮
+      playShow: {
+        type: Boolean,
+        default: true
+      },
+      //显示播放时间
+      timeShow: {
+        type: Boolean,
+        default: true
+      },
+      //显示静音按钮
+      volumeShow: {
+        type: Boolean,
+        default: true
+      },
+      //显示设置按钮
+      settingShow: {
+        type: Boolean,
+        default: true
+      },
+      //显示全拼按钮
+      fullscreenShow: {
+        type: Boolean,
+        default: true
+      },
+      //镜像画面
+      mirror: {
+        type: Boolean,
+        default: false
+      },
+      //音量
+      volume: {
+        type: Number,
+        default: 1
+      },
+      //倍率
+      playbackRate: {
+        type: Number,
+        default: 1
+      },
+      //长按倍速
+      longpressPlaybackRate: {
+        type: Number,
+        default: 3
+      },
+      //展示弹幕
+      barrageShow: {
+        type: Boolean,
+        default: false
+      },
+      //弹幕库
+      barrages: {
+        type: Array,
+        default() {
+          return new Array();
+        }
+      },
+      //弹幕配置
+      barrageConfig: {
+        type: Object,
+        default() {
+          return new Object();
+        }
+      },
+      //弹幕显示上下间距
+      barrageGap: {
+        type: Number,
+        default: 0
+      },
+      //是否直播
+      isLive: {
+        type: Boolean,
+        default: false
+      },
+      //flv配置
+      flvConfig: {
+        type: Object,
+        default() {
+          return new Object();
+        }
+      },
+      //flv切片列表
+      segments: {
+        type: Array,
+        default() {
+          return new Array();
+        }
+      },
+      //非全屏时屏幕方向 仅APP支持
+      generallyDirection: {
+        type: String,
+        default: "portrait-primary"
+      },
+      //全屏时屏幕方向 仅APP支持
+      fullscreenDirection: {
+        type: String,
+        default: "landscape-primary"
+      },
+      //当视频尺寸与视频容器大小不一致时的处理
+      objectFit: {
+        type: String,
+        default: "contain"
+      },
+      crossOrigin: {
+        type: String,
+        default: ""
+      },
+      //开启长按倍速播放
+      enableLongpressPlaybackRate: {
+        type: Boolean,
+        default: true
+      },
+      //开启双击播放暂停
+      enableDoubleToggle: {
+        type: Boolean,
+        default: true
+      },
+      //是否将视频转化为Blob对象,仅支持mp4
+      enableBlob: {
+        type: Boolean,
+        default: false
+      }
+    },
+    computed: {
+      prop() {
+        return {
+          //监听标题
+          title: this.title,
+          //监听倍速
+          playbackRate: this.playbackRate,
+          //监听长按倍速
+          longpressPlaybackRate: this.longpressPlaybackRate,
+          //监听总进度
+          duration: this.duration,
+          //监听音量
+          volume: this.volume,
+          //监听封面
+          poster: this.poster,
+          //监听控制器
+          controls: this.controls,
+          //监听静音
+          muted: this.muted,
+          //监听弹幕显示/隐藏
+          barrageShow: this.barrageShow,
+          //监听进度条显示/隐藏
+          progressShow: this.progressShow,
+          //监听上一集按钮显示/隐藏
+          prevBtnShow: this.prevBtnShow,
+          //监听下一集按钮显示/隐藏
+          nextBtnShow: this.nextBtnShow,
+          //监听播放按钮显示/隐藏
+          playShow: this.playShow,
+          //监听时间显示/隐藏
+          timeShow: this.timeShow,
+          //监听音量按钮显示/隐藏
+          volumeShow: this.volumeShow,
+          //监听设置按钮显示/隐藏
+          settingShow: this.settingShow,
+          //监听全屏按钮显示/隐藏
+          fullscreenShow: this.fullscreenShow,
+          //监听循环播放
+          loop: this.loop,
+          //监听自动播放
+          autoplay: this.autoplay,
+          //监听加载模式
+          preload: this.preload,
+          //监听设置选项
+          settings: this.settings,
+          //监听镜像
+          mirror: this.mirror,
+          //监听尺寸不合时的处理
+          objectFit: this.objectFit,
+          //监听网络处理
+          crossOrigin: this.crossOrigin,
+          //监听blob
+          enableBlob: this.enableBlob,
+          //监听长按倍速播放开关
+          enableLongpressPlaybackRate: this.enableLongpressPlaybackRate,
+          //监听双击播放暂停开关
+          enableDoubleToggle: this.enableDoubleToggle,
+          //监听初始播放时间
+          initialTime: this.initialTime,
+          //监听画中画
+          pictureInPicture: this.pictureInPicture
+        };
+      }
+    },
+    data() {
+      return {
+        ready: "",
+        state: "",
+        seekTime: -1,
+        danmu: "",
+        fullscreen: false,
+        pictureInPicture: false,
+        barrageRefresh: -1,
+        captureEvent: -1
+      };
+    },
+    created() {
+      plus.screen.lockOrientation(this.generallyDirection);
+    },
+    mounted() {
+      this.$nextTick(function() {
+        setTimeout(() => {
+          this.ready = this.dataId;
+        }, 100);
+      });
+    },
+    beforeDestroy() {
+      plus.screen.lockOrientation(this.generallyDirection);
+    },
+    methods: {
+      //触发事件
+      onCanplay(e) {
+        this.$emit("canplay", e);
+      },
+      onCanplaythrough(e) {
+        this.$emit("canplaythrough", e);
+      },
+      onLoadeddata(e) {
+        this.$emit("loadeddata", e);
+      },
+      onLoadedmetadata(e) {
+        this.$emit("loadedmetadata", e);
+      },
+      onLoadstart(e) {
+        this.$emit("loadstart", e);
+      },
+      onPlay(e) {
+        this.$emit("play", e);
+      },
+      onPause(e) {
+        this.$emit("pause", e);
+      },
+      onEnded(e) {
+        this.$emit("ended", e);
+      },
+      onSeeking(e) {
+        this.$emit("seeking", e);
+      },
+      onSeeked(e) {
+        this.$emit("seeked", e);
+      },
+      onWaiting(e) {
+        this.$emit("waiting", e);
+      },
+      onPlaying(e) {
+        this.$emit("playing", e);
+      },
+      onProgress(e) {
+        this.$emit("progress", e);
+      },
+      onTimeupdate(e) {
+        this.$emit("timeupdate", e);
+      },
+      onVolumechange(e) {
+        this.$emit("volumeChange", e);
+      },
+      onRatechange(e) {
+        this.$emit("rateChange", e);
+      },
+      onDurationchange(e) {
+        this.$emit("durationChange", e);
+      },
+      onAbort(e) {
+        this.$emit("abort", e);
+      },
+      onErr(e) {
+        this.$emit("error", e);
+      },
+      onEnterpictureinpicture(e) {
+        this.$emit("enterpictureinpicture", e);
+      },
+      onLeavepictureinpicture(e) {
+        this.$emit("leavepictureinpicture", e);
+      },
+      onCaptureFinish(e) {
+        this.$emit("captureFinish", e);
+      },
+      onControlsChange(e) {
+        this.$emit("controlsChange", e);
+      },
+      onBarrageChange(e) {
+        this.$emit("barrageChange", e);
+      },
+      onPrevBtnClick(e) {
+        this.$emit("prevBtnClick", e);
+      },
+      onNextBtnClick(e) {
+        this.$emit("nextBtnClick", e);
+      },
+      onSeizing(e) {
+        this.$emit("seizing", e);
+      },
+      onStatisticsInfo(e) {
+        this.$emit("statisticsInfo", e);
+      },
+      onLoadingComplete(e) {
+        this.$emit("loadingComplete", e);
+      },
+      onRecoveredEarlyEof(e) {
+        this.$emit("recoveredEarlyEof", e);
+      },
+      onMediaInfo(e) {
+        this.$emit("mediaInfo", e);
+      },
+      onMetadataArrived(e) {
+        this.$emit("metadataArrived", e);
+      },
+      onScriptdataArrived(e) {
+        this.$emit("scriptdataArrived", e);
+      },
+      // 操作事件
+      play() {
+        this.state = "";
+        this.$nextTick(function() {
+          this.state = "play";
+        });
+      },
+      pause() {
+        this.state = "";
+        this.$nextTick(function() {
+          this.state = "pause";
+        });
+      },
+      toggle() {
+        this.state = "";
+        this.$nextTick(function() {
+          this.state = "toggle";
+        });
+      },
+      reload() {
+        this.state = "";
+        this.$nextTick(function() {
+          this.state = "reload";
+        });
+      },
+      stop() {
+        this.state = "";
+        this.$nextTick(function() {
+          this.state = "stop";
+        });
+      },
+      seek(time) {
+        this.seekTime = -1;
+        this.$nextTick(function() {
+          this.seekTime = time;
+        });
+      },
+      capture() {
+        this.captureEvent = -1;
+        this.$nextTick(function() {
+          this.captureEvent = 1;
+        });
+      },
+      drawBarrage(danmu) {
+        this.danmu = "";
+        this.$nextTick(function() {
+          this.danmu = danmu;
+        });
+      },
+      refreshBarrage() {
+        this.barrageRefresh = -1;
+        this.$nextTick(function() {
+          this.barrageRefresh = 1;
+        });
+      },
+      switchFullscreen() {
+        this.fullscreen = !this.fullscreen;
+        this.switchDirection();
+      },
+      switchPictureInPicture() {
+        this.pictureInPicture = !this.pictureInPicture;
+      },
+      launchPictureInPicture() {
+        this.pictureInPicture = true;
+      },
+      exitPictureInPicture() {
+        this.pictureInPicture = false;
+      },
+      launchFullscreen() {
+        this.fullscreen = true;
+        this.switchDirection();
+      },
+      exitFullscreen() {
+        this.fullscreen = false;
+        this.switchDirection();
+      },
+      switchDirection() {
+        if (this.fullscreen) {
+          plus.screen.lockOrientation(this.fullscreenDirection);
+        } else {
+          plus.screen.lockOrientation(this.generallyDirection);
+        }
+      },
+      fullscreenChange(e) {
+        this.fullscreen = e.fullscreen;
+        this.$emit("fullscreenChange", e);
+        this.switchDirection();
+      }
+    }
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", {
+      class: "yingbing-video",
+      id: "yb-video" + $props.dataId,
+      "data-title": $props.title,
+      "data-poster": $props.poster,
+      "data-formats": $props.formats,
+      "data-duration": $props.duration,
+      "data-muted": $props.muted,
+      "data-autoplay": $props.autoplay,
+      "data-initialTime": $props.initialTime,
+      "data-loop": $props.loop,
+      "data-preload": $props.preload,
+      "data-settings": $props.settings,
+      "data-controls": $props.controls,
+      "data-progressShow": $props.progressShow,
+      "data-prevBtnShow": $props.prevBtnShow,
+      "data-nextBtnShow": $props.nextBtnShow,
+      "data-playShow": $props.playShow,
+      "data-timeShow": $props.timeShow,
+      "data-volumeShow": $props.volumeShow,
+      "data-settingShow": $props.settingShow,
+      "data-fullscreenShow": $props.fullscreenShow,
+      "data-mirror": $props.mirror,
+      "data-volume": $props.volume,
+      "data-playbackRate": $props.playbackRate,
+      "data-longpressPlaybackRate": $props.longpressPlaybackRate,
+      "data-barrageShow": $props.barrageShow,
+      "data-barrageGap": $props.barrageGap,
+      "data-isLive": $props.isLive,
+      "data-generallyDirection": $props.generallyDirection,
+      "data-fullscreenDirection": $props.fullscreenDirection,
+      "data-objectFit": $props.objectFit,
+      "data-crossOrigin": $props.crossOrigin,
+      "data-enableBlob": $props.enableBlob,
+      "data-enableLongpressPlaybackRate": $props.enableLongpressPlaybackRate,
+      "data-enableDoubleToggle": $props.enableDoubleToggle,
+      "data-pictureInPicture": $data.pictureInPicture,
+      "data-fullscreen": $data.fullscreen,
+      barrages: vue.wp($props.barrages),
+      "change:barrages": _ctx.ybVideo.barragesWatcher,
+      barrageConfig: vue.wp($props.barrageConfig),
+      "change:barrageConfig": _ctx.ybVideo.barrageConfigWatcher,
+      fullscreen: vue.wp($data.fullscreen),
+      "change:fullscreen": _ctx.ybVideo.fullscreenWatcher,
+      flvConfig: vue.wp($props.flvConfig),
+      "change:flvConfig": _ctx.ybVideo.flvConfigWatcher,
+      state: vue.wp($data.state),
+      "change:state": _ctx.ybVideo.stateWatcher,
+      seekTime: vue.wp($data.seekTime),
+      "change:seekTime": _ctx.ybVideo.seekTimeWatcher,
+      danmu: vue.wp($data.danmu),
+      "change:danmu": _ctx.ybVideo.danmuWatcher,
+      captureEvent: vue.wp($data.captureEvent),
+      "change:captureEvent": _ctx.ybVideo.captureEventWatcher,
+      barrageRefresh: vue.wp($data.barrageRefresh),
+      "change:barrageRefresh": _ctx.ybVideo.barrageRefreshWatcher,
+      prop: vue.wp($options.prop),
+      "change:prop": _ctx.ybVideo.propWatcher,
+      ready: vue.wp($data.ready),
+      "change:ready": _ctx.ybVideo.readyWatcher,
+      src: vue.wp($props.src),
+      "change:src": _ctx.ybVideo.srcWatcher,
+      segments: vue.wp($props.segments),
+      "change:segments": _ctx.ybVideo.segmentsWatcher
+    }, [
+      vue.createElementVNode("view", { class: "ybplayer-slots" }, [
+        vue.createElementVNode("view", { class: "ybplayer-controls-slots" }, [
+          vue.renderSlot(_ctx.$slots, "controls", {}, void 0, true)
+        ]),
+        vue.createElementVNode("view", { class: "ybplayer-default-slots" }, [
+          vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+        ])
+      ])
+    ], 8, ["id", "data-title", "data-poster", "data-formats", "data-duration", "data-muted", "data-autoplay", "data-initialTime", "data-loop", "data-preload", "data-settings", "data-controls", "data-progressShow", "data-prevBtnShow", "data-nextBtnShow", "data-playShow", "data-timeShow", "data-volumeShow", "data-settingShow", "data-fullscreenShow", "data-mirror", "data-volume", "data-playbackRate", "data-longpressPlaybackRate", "data-barrageShow", "data-barrageGap", "data-isLive", "data-generallyDirection", "data-fullscreenDirection", "data-objectFit", "data-crossOrigin", "data-enableBlob", "data-enableLongpressPlaybackRate", "data-enableDoubleToggle", "data-pictureInPicture", "data-fullscreen", "barrages", "change:barrages", "barrageConfig", "change:barrageConfig", "fullscreen", "change:fullscreen", "flvConfig", "change:flvConfig", "state", "change:state", "seekTime", "change:seekTime", "danmu", "change:danmu", "captureEvent", "change:captureEvent", "barrageRefresh", "change:barrageRefresh", "prop", "change:prop", "ready", "change:ready", "src", "change:src", "segments", "change:segments"]);
+  }
+  if (typeof block0 === "function")
+    block0(_sfc_main$9);
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__scopeId", "data-v-72cc154e"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/yingbing-video/components/yingbing-video/yingbing-video.vue"]]);
   const _sfc_main$8 = {
     name: "uniCollapseItem",
     props: {
@@ -1589,7 +2180,7 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-collapse-item" }, [
       vue.createCommentVNode(" onClick(!isOpen) "),
       vue.createElementVNode(
@@ -1665,7 +2256,7 @@ if (uni.restoreGlobal) {
       )
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-3d2dde9f"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue"]]);
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-3d2dde9f"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue"]]);
   const _sfc_main$7 = {
     name: "uniCollapse",
     emits: ["change", "activeItem", "input", "update:modelValue"],
@@ -1782,7 +2373,7 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-3f050360"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue"]]);
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-3f050360"], ["__file", "D:/hbuilderx/Projects/pilipili/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue"]]);
   const _imports_0 = "/static/views_gray.svg";
   const _imports_1 = "/static/barrages_gray.svg";
   const _sfc_main$6 = {
@@ -1810,86 +2401,80 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
-    return vue.openBlock(), vue.createElementBlock("scroll-view", {
-      "scroll-y": "",
-      style: { "height": "1396rpx" }
-    }, [
-      vue.createCommentVNode(' @scrolltolower="loadMoreVideos" '),
-      (vue.openBlock(true), vue.createElementBlock(
-        vue.Fragment,
-        null,
-        vue.renderList($props.relatedVideos, (related) => {
-          return vue.openBlock(), vue.createElementBlock("view", {
-            key: related.videoid,
-            class: "related-item",
-            onClick: ($event) => $options.gotoVideo(related)
-          }, [
-            vue.createCommentVNode(" 视频封面 "),
-            vue.createElementVNode("view", { class: "related-image-container" }, [
-              vue.createElementVNode("image", {
-                src: related.cover,
-                class: "related-image"
-              }, null, 8, ["src"]),
-              vue.createElementVNode(
-                "view",
-                { class: "related-time" },
-                vue.toDisplayString(related.time),
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
+    return vue.openBlock(true), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      vue.renderList($props.relatedVideos, (related) => {
+        return vue.openBlock(), vue.createElementBlock("view", {
+          key: related.videoid,
+          class: "related-item",
+          onClick: ($event) => $options.gotoVideo(related)
+        }, [
+          vue.createCommentVNode(" 视频封面 "),
+          vue.createElementVNode("view", { class: "related-image-container" }, [
+            vue.createElementVNode("image", {
+              src: related.cover,
+              class: "related-image"
+            }, null, 8, ["src"]),
+            vue.createElementVNode(
+              "view",
+              { class: "related-time" },
+              vue.toDisplayString(related.time),
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createCommentVNode(" 视频信息 "),
+          vue.createElementVNode("view", { class: "related-stats" }, [
+            vue.createElementVNode(
+              "text",
+              { class: "related-title" },
+              vue.toDisplayString(related.title),
+              1
+              /* TEXT */
+            ),
+            vue.createElementVNode("view", { class: "related-username" }, [
+              vue.createVNode(_component_uni_icons, {
+                type: "person",
+                size: "30rpx"
+              }),
+              vue.createTextVNode(
+                " " + vue.toDisplayString(related.username),
                 1
                 /* TEXT */
               )
             ]),
-            vue.createCommentVNode(" 视频信息 "),
-            vue.createElementVNode("view", { class: "related-stats" }, [
+            vue.createElementVNode("view", { style: { "display": "flex", "align-items": "center" } }, [
+              vue.createElementVNode("image", {
+                src: _imports_0,
+                class: "related-icon"
+              }),
               vue.createElementVNode(
                 "text",
-                { class: "related-title" },
-                vue.toDisplayString(related.title),
+                { class: "related-views" },
+                vue.toDisplayString($options.format(related.views)),
                 1
                 /* TEXT */
               ),
-              vue.createElementVNode("view", { class: "related-username" }, [
-                vue.createVNode(_component_uni_icons, {
-                  type: "person",
-                  size: "30rpx"
-                }),
-                vue.createTextVNode(
-                  " " + vue.toDisplayString(related.username),
-                  1
-                  /* TEXT */
-                )
-              ]),
-              vue.createElementVNode("view", { style: { "display": "flex", "align-items": "center" } }, [
-                vue.createElementVNode("image", {
-                  src: _imports_0,
-                  class: "related-icon"
-                }),
-                vue.createElementVNode(
-                  "text",
-                  { class: "related-views" },
-                  vue.toDisplayString($options.format(related.views)),
-                  1
-                  /* TEXT */
-                ),
-                vue.createElementVNode("image", {
-                  src: _imports_1,
-                  class: "related-icon"
-                }),
-                vue.createElementVNode(
-                  "text",
-                  { class: "related-barrages" },
-                  vue.toDisplayString($options.format(related.barrages)),
-                  1
-                  /* TEXT */
-                )
-              ])
+              vue.createElementVNode("image", {
+                src: _imports_1,
+                class: "related-icon"
+              }),
+              vue.createElementVNode(
+                "text",
+                { class: "related-barrages" },
+                vue.toDisplayString($options.format(related.barrages)),
+                1
+                /* TEXT */
+              )
             ])
-          ], 8, ["onClick"]);
-        }),
-        128
-        /* KEYED_FRAGMENT */
-      ))
-    ]);
+          ])
+        ], 8, ["onClick"]);
+      }),
+      128
+      /* KEYED_FRAGMENT */
+    );
   }
   const RelatedVideos = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__scopeId", "data-v-df0b614b"], ["__file", "D:/hbuilderx/Projects/pilipili/components/related-videos.vue"]]);
   const _sfc_main$5 = {
@@ -1899,6 +2484,7 @@ if (uni.restoreGlobal) {
     },
     data() {
       return {
+        showControls: true,
         currentTab: "abstracts",
         videoid: null,
         videoData: {},
@@ -1981,6 +2567,78 @@ if (uni.restoreGlobal) {
             barrages: 3230,
             time: "0:15",
             username: "芝士阿毛"
+          },
+          {
+            videoid: 13,
+            title: "我看到的和我画的",
+            cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+            views: 1169,
+            barrages: 5,
+            time: "1:07",
+            username: "MORNCOLOUR"
+          },
+          {
+            videoid: 14,
+            title: "128秒看完《哪吒2》",
+            cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 628e3,
+            barrages: 592,
+            time: "2:08",
+            username: "神奇的大智"
+          },
+          {
+            videoid: 15,
+            title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+            cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 16e4,
+            barrages: 3230,
+            time: "0:15",
+            username: "芝士阿毛"
+          },
+          {
+            videoid: 16,
+            title: "我看到的和我画的",
+            cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+            views: 449e3,
+            barrages: 242,
+            time: "1:07",
+            username: "MORNCOLOUR"
+          },
+          {
+            videoid: 17,
+            title: "128秒看完《哪吒2》",
+            cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 628e3,
+            barrages: 592,
+            time: "2:08",
+            username: "神奇的大智"
+          },
+          {
+            videoid: 18,
+            title: "我看到的和我画的",
+            cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+            views: 1169,
+            barrages: 5,
+            time: "1:07",
+            username: "MORNCOLOUR"
+          },
+          {
+            videoid: 19,
+            title: "128秒看完《哪吒2》",
+            cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 628e3,
+            barrages: 592,
+            time: "2:08",
+            username: "神奇的大智"
+          },
+          {
+            videoid: 20,
+            title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+            cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+            views: 16e4,
+            barrages: 3230,
+            time: "0:15",
+            username: "芝士阿毛"
           }
         ],
         user: {
@@ -1989,6 +2647,32 @@ if (uni.restoreGlobal) {
           avatar: "/static/avatar.jpg",
           fans: 53e3,
           videonum: 108
+        },
+        barrages: [
+          {
+            key: "fctc651a9pm2j20bia8j",
+            time: 1,
+            text: "这是新增的一条弹幕"
+          },
+          {
+            key: "fctc651a9pm2j20bia8q",
+            time: 1,
+            text: "这是新增的一条弹幕",
+            fontSize: 16,
+            color: "#0ff"
+          },
+          {
+            key: "fctc651a9pm2j20bi8jw",
+            time: 3,
+            text: "这是第3秒的弹幕",
+            color: "#ccc"
+          }
+        ],
+        barrageConfig: {
+          speed: 100,
+          defaultColor: "#000000",
+          fontSize: 20,
+          textShadowBlur: 0
         }
       };
     },
@@ -2010,6 +2694,9 @@ if (uni.restoreGlobal) {
       this.videoid = options.videoid;
       this.videoData = uni.getStorageSync("videoInfo") || {};
       this.fetchVideoComplement();
+    },
+    onReady() {
+      this.videoContext = uni.createVideoContext("myVideo");
     },
     methods: {
       handleTabChange(tab) {
@@ -2058,17 +2745,17 @@ if (uni.restoreGlobal) {
             let minutes = this.convert(date.getMinutes());
             let seconds = this.convert(date.getSeconds());
             this.videoComplement.releasetime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes + ":" + seconds;
-            this.videoComplement.url = API_BASE_URL + this.videoComplement.url;
-            formatAppLog("log", "at pages/video/video.vue:255", this.videoComplement);
+            this.videoComplement.url = API_RESOURCES_URL + this.videoComplement.url;
+            formatAppLog("log", "at pages/video/video.vue:366", this.videoComplement);
           } else {
-            formatAppLog("error", "at pages/video/video.vue:257", "请求失败:", res);
+            formatAppLog("error", "at pages/video/video.vue:368", "请求失败:", res);
             uni.showToast({
               title: "数据加载失败",
               icon: "none"
             });
           }
         } catch (error) {
-          formatAppLog("error", "at pages/video/video.vue:264", "网络请求错误:", error);
+          formatAppLog("error", "at pages/video/video.vue:375", "网络请求错误:", error);
           uni.showToast({
             title: "网络请求失败",
             icon: "none"
@@ -2077,263 +2764,302 @@ if (uni.restoreGlobal) {
       },
       back() {
         uni.navigateBack();
+      },
+      fullscreenChange() {
+        this.showControls = !this.showControls;
       }
+      // doubleSpeed() {
+      // 	let videoContext = uni.createVideoContext('myVideo', this);
+      // 	videoContext.playbackRate(1.5);
+      // 	__f__('log','at pages/video/video.vue:391',1);
+      // },
+      // sendDanmu() {
+      // 	this.videoContext.sendDanmu({
+      // 		text: this.danmuValue,
+      // 		color: this.getRandomColor()
+      // 	});
+      // 	this.danmuValue = '';
+      // },
+      // videoErrorCallback: function(e) {
+      // 	uni.showModal({
+      // 		content: e.target.errMsg,
+      // 		showCancel: false
+      // 	})
+      // },
+      // getRandomColor: function() {
+      // 	const rgb = []
+      // 	for (let i = 0; i < 3; ++i) {
+      // 		let color = Math.floor(Math.random() * 256).toString(16)
+      // 		color = color.length == 1 ? '0' + color : color
+      // 		rgb.push(color)
+      // 	}
+      // 	return '#' + rgb.join('')
+      // }
     }
   };
   function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_StatusBar = vue.resolveComponent("StatusBar");
-    const _component_uni_collapse_item = resolveEasycom(vue.resolveDynamicComponent("uni-collapse-item"), __easycom_0);
-    const _component_uni_collapse = resolveEasycom(vue.resolveDynamicComponent("uni-collapse"), __easycom_1);
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
+    const _component_yingbing_video = resolveEasycom(vue.resolveDynamicComponent("yingbing-video"), __easycom_1);
+    const _component_NavTabs = vue.resolveComponent("NavTabs");
+    const _component_uni_collapse_item = resolveEasycom(vue.resolveDynamicComponent("uni-collapse-item"), __easycom_2);
+    const _component_uni_collapse = resolveEasycom(vue.resolveDynamicComponent("uni-collapse"), __easycom_3);
     const _component_RelatedVideos = vue.resolveComponent("RelatedVideos");
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
       [
         vue.createVNode(_component_StatusBar),
-        vue.createElementVNode("view", { class: "video-container" }, [
+        vue.createElementVNode("view", { class: "container" }, [
           vue.createCommentVNode(" 视频播放器 "),
-          vue.createCommentVNode(' src=/videos/1.mp4" '),
-          vue.createCommentVNode(' <video  class="video-player" autoplay controls></video> '),
-          vue.createElementVNode("video", {
+          vue.createCommentVNode(' 		<video id="myVideo" :src="videoComplement.url" class="video-player" autoplay controls danmu-btn enable-danmu\r\n			:danmu-list="danmuList" object-fit="fill" :title="videoData.title" vslide-gesture="true"\r\n			vslide-gesture-in-fullscreen="true">\r\n			<cover-view class="back-button" @click="back">\r\n				<</cover-view>\r\n					<cover-view style="position: absolute;top: 128rpx;right: 60rpx;"\r\n						@click="doubleSpeed">倍速</cover-view>\r\n		</video> '),
+          vue.createVNode(_component_yingbing_video, {
             src: $data.videoComplement.url,
-            class: "video-player",
+            style: { "width": "100%", "height": "450rpx" },
             autoplay: "",
-            controls: "",
-            "danmu-btn": "",
-            "enable-danmu": "",
-            "object-fit": "fill",
+            preload: "meta",
             title: $data.videoData.title,
-            "page-gesture": "true",
-            "vslide-gesture": "true",
-            "vslide-gesture-in-fullscreen": "true"
-          }, [
-            vue.createCommentVNode(' <cover-view class="back-button" @click="back"><</cover-view> ')
-          ], 8, ["src", "title"]),
-          vue.createCommentVNode(' page-gesture="true" '),
+            onFullscreenChange: $options.fullscreenChange,
+            settings: "barrage,playbackRate,mirror",
+            "object-fit": "contain",
+            barrages: $data.barrages,
+            barrageShow: "",
+            "barrage-config": $data.barrageConfig
+          }, {
+            controls: vue.withCtx(() => [
+              vue.withDirectives(vue.createVNode(_component_uni_icons, {
+                class: "back-button",
+                type: "left",
+                size: "40rpx",
+                color: "#FFF",
+                onClick: $options.back
+              }, null, 8, ["onClick"]), [
+                [vue.vShow, $data.showControls]
+              ])
+            ]),
+            _: 1
+            /* STABLE */
+          }, 8, ["src", "title", "onFullscreenChange", "barrages", "barrage-config"]),
           vue.createCommentVNode(" 简介、评论 "),
-          vue.createCommentVNode(' <NavTabs :activeTab="currentTab" :tabs="tabs" @tabChange="handleTabChange" /> '),
-          vue.createElementVNode("view", { class: "nav-tabs" }, [
-            (vue.openBlock(true), vue.createElementBlock(
-              vue.Fragment,
-              null,
-              vue.renderList($options.tabs, (tab, index) => {
-                return vue.openBlock(), vue.createElementBlock("text", {
-                  key: index,
-                  class: vue.normalizeClass(["tab", $data.currentTab === tab.value ? "active" : ""]),
-                  onClick: ($event) => $options.handleTabChange(tab.value)
-                }, vue.toDisplayString(tab.text), 11, ["onClick"]);
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            ))
-          ]),
+          vue.createVNode(_component_NavTabs, {
+            activeTab: $data.currentTab,
+            tabs: $options.tabs,
+            onTabChange: $options.handleTabChange
+          }, null, 8, ["activeTab", "tabs", "onTabChange"]),
           vue.createCommentVNode(" 简介页面 "),
-          vue.withDirectives(vue.createElementVNode(
-            "view",
-            { style: { "padding": "15rpx 15rpx 0rpx 15rpx" } },
-            [
-              vue.createCommentVNode(" 作者信息 "),
-              vue.createElementVNode("view", { class: "user-info" }, [
-                vue.createElementVNode("view", { style: { "position": "relative", "min-width": "350rpx" } }, [
-                  vue.createElementVNode("image", {
-                    class: "avatar",
-                    src: $data.user.avatar
-                  }, null, 8, ["src"]),
-                  vue.createElementVNode(
-                    "text",
-                    { class: "username" },
-                    vue.toDisplayString($data.videoData.username),
-                    1
-                    /* TEXT */
-                  ),
-                  vue.createElementVNode(
-                    "text",
-                    { class: "userfans" },
-                    vue.toDisplayString($options.format($data.user.fans)) + "粉丝 " + vue.toDisplayString($data.user.videonum) + "视频",
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "attent-button" }, "+ 关注")
-              ]),
-              vue.createCommentVNode(" 视频信息 采用折叠面板"),
-              vue.createVNode(_component_uni_collapse, { style: { "padding-top": "10rpx", "padding-bottom": "10rpx", "max-width": "96%" } }, {
-                default: vue.withCtx(() => [
-                  vue.createVNode(_component_uni_collapse_item, {
-                    "title-border": "none",
-                    border: false
-                  }, {
-                    title: vue.withCtx(() => [
-                      vue.createElementVNode(
-                        "view",
-                        { class: "video-title" },
-                        vue.toDisplayString($data.videoData.title),
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode("view", { style: { "display": "flex", "justify-content": "flex-start", "align-items": "center", "margin": "10rpx 0rpx" } }, [
-                        vue.createElementVNode("image", {
-                          src: _imports_0,
-                          class: "stats-icon"
-                        }),
-                        vue.createElementVNode(
-                          "text",
-                          { class: "views_barrages" },
-                          vue.toDisplayString($options.format($data.videoData.views)),
-                          1
-                          /* TEXT */
-                        ),
-                        vue.createElementVNode("image", {
-                          src: _imports_1,
-                          class: "stats-icon"
-                        }),
-                        vue.createElementVNode(
-                          "text",
-                          { class: "views_barrages" },
-                          vue.toDisplayString($options.format($data.videoData.barrages)),
-                          1
-                          /* TEXT */
-                        ),
-                        vue.createElementVNode(
-                          "text",
-                          { class: "views_barrages" },
-                          vue.toDisplayString($data.videoComplement.releasetime),
-                          1
-                          /* TEXT */
-                        )
-                      ])
-                    ]),
-                    default: vue.withCtx(() => [
-                      vue.createElementVNode(
-                        "text",
-                        { style: { "color": "#69686d", "font-size": "26rpx" } },
-                        vue.toDisplayString($data.videoComplement.abstracts),
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode("view", { style: { "display": "flex", "gap": "20rpx", "flex-wrap": "wrap", "margin-top": "15rpx" } }, [
-                        (vue.openBlock(true), vue.createElementBlock(
-                          vue.Fragment,
-                          null,
-                          vue.renderList($data.videoComplement.tags, (tag) => {
-                            return vue.openBlock(), vue.createElementBlock(
-                              "text",
-                              { class: "tag" },
-                              vue.toDisplayString(tag),
-                              1
-                              /* TEXT */
-                            );
-                          }),
-                          256
-                          /* UNKEYED_FRAGMENT */
-                        ))
-                      ])
-                    ]),
-                    _: 1
-                    /* STABLE */
-                  })
-                ]),
-                _: 1
-                /* STABLE */
-              }),
-              vue.createCommentVNode(" 点赞、收藏、分享 "),
-              vue.createElementVNode("view", { class: "actions" }, [
+          vue.createElementVNode("scroll-view", {
+            "scroll-y": "",
+            style: { "height": "995rpx" }
+          }, [
+            vue.withDirectives(vue.createElementVNode(
+              "view",
+              { style: { "padding": "15rpx 15rpx 0rpx 15rpx" } },
+              [
+                vue.createCommentVNode(" 作者信息 "),
                 vue.createElementVNode("view", {
-                  class: "action-item",
-                  onClick: _cache[0] || (_cache[0] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                  class: "user-info",
+                  onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onVideoClick && _ctx.onVideoClick(...args))
                 }, [
-                  vue.createVNode(_component_uni_icons, {
-                    type: $data.action.liked ? "hand-up-filled" : "hand-up",
-                    size: "66rpx;"
-                  }, null, 8, ["type"]),
-                  vue.createElementVNode(
-                    "view",
-                    { class: "likes" },
-                    vue.toDisplayString($options.format($data.videoComplement.likes)),
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", {
-                  class: "action-item",
-                  onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleCollect && $options.toggleCollect(...args))
-                }, [
-                  vue.createVNode(_component_uni_icons, {
-                    type: $data.action.collected ? "star-filled" : "star",
-                    size: "66rpx;"
-                  }, null, 8, ["type"]),
-                  vue.createElementVNode(
-                    "text",
-                    { class: "likes" },
-                    vue.toDisplayString($options.format($data.videoComplement.collections)),
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", {
-                  class: "action-item",
-                  onClick: _cache[2] || (_cache[2] = (...args) => $options.toggleShare && $options.toggleShare(...args))
-                }, [
-                  vue.createVNode(_component_uni_icons, {
-                    type: $data.action.shared ? "redo-filled" : "redo",
-                    size: "66rpx;"
-                  }, null, 8, ["type"]),
-                  vue.createElementVNode(
-                    "text",
-                    { class: "likes" },
-                    vue.toDisplayString($options.format($data.videoComplement.forwards)),
-                    1
-                    /* TEXT */
-                  )
-                ])
-              ]),
-              vue.createCommentVNode(" 相关视频推荐 "),
-              vue.createVNode(_component_RelatedVideos, { "related-videos": $data.relatedVideos }, null, 8, ["related-videos"])
-            ],
-            512
-            /* NEED_PATCH */
-          ), [
-            [vue.vShow, $data.currentTab === "abstracts"]
-          ]),
-          vue.createCommentVNode(" 评论区页面 "),
-          vue.withDirectives(vue.createElementVNode(
-            "view",
-            { class: "comments-section" },
-            [
-              vue.createElementVNode("text", { class: "section-title" }, "评论"),
-              (vue.openBlock(true), vue.createElementBlock(
-                vue.Fragment,
-                null,
-                vue.renderList($data.comments, (comment) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    key: comment.id,
-                    class: "comment-item"
-                  }, [
+                  vue.createElementVNode("view", { style: { "position": "relative", "min-width": "350rpx" } }, [
+                    vue.createElementVNode("image", {
+                      class: "avatar",
+                      src: $data.user.avatar
+                    }, null, 8, ["src"]),
                     vue.createElementVNode(
                       "text",
-                      { class: "comment-author" },
-                      vue.toDisplayString(comment.author) + ":",
+                      { class: "username" },
+                      vue.toDisplayString($data.videoData.username),
                       1
                       /* TEXT */
                     ),
                     vue.createElementVNode(
                       "text",
-                      { class: "comment-content" },
-                      vue.toDisplayString(comment.content),
+                      { class: "userfans" },
+                      vue.toDisplayString($options.format($data.user.fans)) + "粉丝 " + vue.toDisplayString($data.user.videonum) + "视频",
                       1
                       /* TEXT */
                     )
-                  ]);
+                  ]),
+                  vue.createElementVNode("view", { class: "attent-button" }, "+ 关注")
+                ]),
+                vue.createCommentVNode(" 视频信息 采用折叠面板"),
+                vue.createVNode(_component_uni_collapse, { style: { "padding-top": "10rpx", "padding-bottom": "10rpx", "max-width": "96%" } }, {
+                  default: vue.withCtx(() => [
+                    vue.createVNode(_component_uni_collapse_item, {
+                      "title-border": "none",
+                      border: false
+                    }, {
+                      title: vue.withCtx(() => [
+                        vue.createElementVNode(
+                          "view",
+                          { class: "video-title" },
+                          vue.toDisplayString($data.videoData.title),
+                          1
+                          /* TEXT */
+                        ),
+                        vue.createElementVNode("view", { style: { "display": "flex", "justify-content": "flex-start", "align-items": "center", "margin": "10rpx 0rpx" } }, [
+                          vue.createElementVNode("image", {
+                            src: _imports_0,
+                            class: "stats-icon"
+                          }),
+                          vue.createElementVNode(
+                            "text",
+                            { class: "views_barrages" },
+                            vue.toDisplayString($options.format($data.videoData.views)),
+                            1
+                            /* TEXT */
+                          ),
+                          vue.createElementVNode("image", {
+                            src: _imports_1,
+                            class: "stats-icon"
+                          }),
+                          vue.createElementVNode(
+                            "text",
+                            { class: "views_barrages" },
+                            vue.toDisplayString($options.format($data.videoData.barrages)),
+                            1
+                            /* TEXT */
+                          ),
+                          vue.createElementVNode(
+                            "text",
+                            { class: "views_barrages" },
+                            vue.toDisplayString($data.videoComplement.releasetime),
+                            1
+                            /* TEXT */
+                          )
+                        ])
+                      ]),
+                      default: vue.withCtx(() => [
+                        vue.createElementVNode(
+                          "text",
+                          { style: { "color": "#69686d", "font-size": "26rpx" } },
+                          vue.toDisplayString($data.videoComplement.abstracts),
+                          1
+                          /* TEXT */
+                        ),
+                        vue.createElementVNode("view", { style: { "display": "flex", "gap": "20rpx", "flex-wrap": "wrap", "margin-top": "15rpx" } }, [
+                          (vue.openBlock(true), vue.createElementBlock(
+                            vue.Fragment,
+                            null,
+                            vue.renderList($data.videoComplement.tags, (tag) => {
+                              return vue.openBlock(), vue.createElementBlock(
+                                "text",
+                                { class: "tag" },
+                                vue.toDisplayString(tag),
+                                1
+                                /* TEXT */
+                              );
+                            }),
+                            256
+                            /* UNKEYED_FRAGMENT */
+                          ))
+                        ])
+                      ]),
+                      _: 1
+                      /* STABLE */
+                    })
+                  ]),
+                  _: 1
+                  /* STABLE */
                 }),
-                128
-                /* KEYED_FRAGMENT */
-              ))
-            ],
-            512
-            /* NEED_PATCH */
-          ), [
-            [vue.vShow, $data.currentTab === "comments"]
+                vue.createCommentVNode(" 点赞、收藏、分享 "),
+                vue.createElementVNode("view", { class: "actions" }, [
+                  vue.createElementVNode("view", {
+                    class: "action-item",
+                    onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                  }, [
+                    vue.createVNode(_component_uni_icons, {
+                      type: $data.action.liked ? "hand-up-filled" : "hand-up",
+                      size: "66rpx;"
+                    }, null, 8, ["type"]),
+                    vue.createElementVNode(
+                      "view",
+                      { class: "likes" },
+                      vue.toDisplayString($options.format($data.videoComplement.likes)),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", {
+                    class: "action-item",
+                    onClick: _cache[2] || (_cache[2] = (...args) => $options.toggleCollect && $options.toggleCollect(...args))
+                  }, [
+                    vue.createVNode(_component_uni_icons, {
+                      type: $data.action.collected ? "star-filled" : "star",
+                      size: "66rpx;"
+                    }, null, 8, ["type"]),
+                    vue.createElementVNode(
+                      "text",
+                      { class: "likes" },
+                      vue.toDisplayString($options.format($data.videoComplement.collections)),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", {
+                    class: "action-item",
+                    onClick: _cache[3] || (_cache[3] = (...args) => $options.toggleShare && $options.toggleShare(...args))
+                  }, [
+                    vue.createVNode(_component_uni_icons, {
+                      type: $data.action.shared ? "redo-filled" : "redo",
+                      size: "66rpx;"
+                    }, null, 8, ["type"]),
+                    vue.createElementVNode(
+                      "text",
+                      { class: "likes" },
+                      vue.toDisplayString($options.format($data.videoComplement.forwards)),
+                      1
+                      /* TEXT */
+                    )
+                  ])
+                ]),
+                vue.createCommentVNode(" 相关视频推荐 "),
+                vue.createVNode(_component_RelatedVideos, { "related-videos": $data.relatedVideos }, null, 8, ["related-videos"])
+              ],
+              512
+              /* NEED_PATCH */
+            ), [
+              [vue.vShow, $data.currentTab === "abstracts"]
+            ]),
+            vue.createCommentVNode(" 评论区页面 "),
+            vue.withDirectives(vue.createElementVNode(
+              "view",
+              { class: "comments-section" },
+              [
+                vue.createElementVNode("text", { class: "section-title" }, "评论"),
+                (vue.openBlock(true), vue.createElementBlock(
+                  vue.Fragment,
+                  null,
+                  vue.renderList($data.comments, (comment) => {
+                    return vue.openBlock(), vue.createElementBlock("view", {
+                      key: comment.id,
+                      class: "comment-item"
+                    }, [
+                      vue.createElementVNode(
+                        "text",
+                        { class: "comment-author" },
+                        vue.toDisplayString(comment.author) + ":",
+                        1
+                        /* TEXT */
+                      ),
+                      vue.createElementVNode(
+                        "text",
+                        { class: "comment-content" },
+                        vue.toDisplayString(comment.content),
+                        1
+                        /* TEXT */
+                      )
+                    ]);
+                  }),
+                  128
+                  /* KEYED_FRAGMENT */
+                ))
+              ],
+              512
+              /* NEED_PATCH */
+            ), [
+              [vue.vShow, $data.currentTab === "comments"]
+            ])
           ])
         ])
       ],
@@ -2447,7 +3173,7 @@ if (uni.restoreGlobal) {
   };
   function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_StatusBar = vue.resolveComponent("StatusBar");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -2590,12 +3316,13 @@ if (uni.restoreGlobal) {
           {
             text: "用户",
             value: "users"
-            // },
-            // {
-            // 	text: '<image src="@/static/views_gray.svg"></image>',
-            // 	value: "filter"
+          },
+          {
+            value: "filter"
           }
         ],
+        currentZone: "不限",
+        zones: ["不限", "生活", "美食", "游戏", "音乐", "时尚", "知识", "娱乐", "影视", "动画", "汽车", "动物圈", "科技", "运动", "鬼畜"],
         relatedVideos: [
           {
             videoid: 5,
@@ -2743,12 +3470,15 @@ if (uni.restoreGlobal) {
       },
       handleTabChange(tab) {
         this.currentTab = tab;
+      },
+      switchZone(zone) {
+        this.currentZone = zone;
       }
     }
   };
   function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_StatusBar = vue.resolveComponent("StatusBar");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
     const _component_NavTabs = vue.resolveComponent("NavTabs");
     const _component_RelatedVideos = vue.resolveComponent("RelatedVideos");
     return vue.openBlock(), vue.createElementBlock(
@@ -2806,27 +3536,57 @@ if (uni.restoreGlobal) {
             tabs: $data.tabs,
             onTabChange: $options.handleTabChange
           }, null, 8, ["activeTab", "tabs", "onTabChange"]),
-          vue.createCommentVNode(" 视频搜索结果 "),
-          vue.withDirectives(vue.createElementVNode(
-            "view",
-            null,
-            [
-              vue.createVNode(_component_RelatedVideos, { "related-videos": $data.relatedVideos }, null, 8, ["related-videos"])
-            ],
-            512
-            /* NEED_PATCH */
-          ), [
-            [vue.vShow, $data.currentTab === "videos"]
-          ]),
-          vue.createCommentVNode(" 用户搜索结果 "),
-          vue.withDirectives(vue.createElementVNode(
-            "view",
-            null,
-            null,
-            512
-            /* NEED_PATCH */
-          ), [
-            [vue.vShow, $data.currentTab === "users"]
+          vue.createElementVNode("scroll-view", {
+            "scroll-y": "",
+            style: { "height": "1380rpx" }
+          }, [
+            vue.createCommentVNode(" 视频搜索结果 "),
+            vue.withDirectives(vue.createElementVNode(
+              "view",
+              { style: { "position": "relative" } },
+              [
+                vue.withDirectives(vue.createElementVNode(
+                  "view",
+                  { class: "filter" },
+                  [
+                    vue.createElementVNode("text", { style: { "font-size": "28rpx" } }, "内容分区"),
+                    vue.createElementVNode("view", { style: { "display": "flex", "gap": "20rpx", "flex-wrap": "wrap", "margin": "10rpx 0rpx" } }, [
+                      (vue.openBlock(true), vue.createElementBlock(
+                        vue.Fragment,
+                        null,
+                        vue.renderList($data.zones, (zone) => {
+                          return vue.openBlock(), vue.createElementBlock("text", {
+                            class: vue.normalizeClass(["zone", $data.currentZone === zone ? "active" : ""]),
+                            onClick: ($event) => $options.switchZone(zone)
+                          }, vue.toDisplayString(zone), 11, ["onClick"]);
+                        }),
+                        256
+                        /* UNKEYED_FRAGMENT */
+                      ))
+                    ])
+                  ],
+                  512
+                  /* NEED_PATCH */
+                ), [
+                  [vue.vShow, $data.currentTab === "filter"]
+                ]),
+                vue.createVNode(_component_RelatedVideos, { "related-videos": $data.relatedVideos }, null, 8, ["related-videos"])
+              ],
+              512
+              /* NEED_PATCH */
+            ), [
+              [vue.vShow, $data.currentTab === "videos" || $data.currentTab === "filter"]
+            ]),
+            vue.createCommentVNode(" 用户搜索结果 "),
+            vue.withDirectives(vue.createElementVNode(
+              "view",
+              null,
+              "1",
+              512
+              /* NEED_PATCH */
+            ), [
+              [vue.vShow, $data.currentTab === "users"]
+            ])
           ])
         ])
       ],

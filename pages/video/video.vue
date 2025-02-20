@@ -1,87 +1,95 @@
 <template>
 	<StatusBar />
-	<view class="video-container">
+	<view class="container">
 		<!-- 视频播放器 -->
-		<!-- src=/videos/1.mp4" -->
-		<!-- <video  class="video-player" autoplay controls></video> -->
-		<video :src="videoComplement.url" class="video-player" autoplay controls danmu-btn enable-danmu
-			object-fit="fill" :title="videoData.title" page-gesture="true" vslide-gesture="true"
+		<!-- 		<video id="myVideo" :src="videoComplement.url" class="video-player" autoplay controls danmu-btn enable-danmu
+			:danmu-list="danmuList" object-fit="fill" :title="videoData.title" vslide-gesture="true"
 			vslide-gesture-in-fullscreen="true">
-			<!-- <cover-view class="back-button" @click="back"><</cover-view> -->
-		</video>
-		<!-- page-gesture="true" -->
-
+			<cover-view class="back-button" @click="back">
+				<</cover-view>
+					<cover-view style="position: absolute;top: 128rpx;right: 60rpx;"
+						@click="doubleSpeed">倍速</cover-view>
+		</video> -->
+		<yingbing-video :src="videoComplement.url" style="width: 100%;height: 450rpx;" autoplay preload="meta"
+			:title="videoData.title" @fullscreenChange="fullscreenChange" settings="barrage,playbackRate,mirror"
+			object-fit="contain" :barrages="barrages" barrageShow :barrage-config="barrageConfig">
+			<template #controls>
+				<uni-icons v-show="showControls" class="back-button" type="left" size="40rpx" color="#FFF"
+					@click="back"></uni-icons>
+			</template>
+		</yingbing-video>
 		<!-- 简介、评论 -->
-		<!-- <NavTabs :activeTab="currentTab" :tabs="tabs" @tabChange="handleTabChange" /> -->
-		<view class="nav-tabs">
-			<text v-for="(tab,index) in tabs" :key="index" :class="['tab',currentTab === tab.value ? 'active' : '']"
-				@click="handleTabChange(tab.value)">{{ tab.text }}</text>
-		</view>
+		<NavTabs :activeTab="currentTab" :tabs="tabs" @tabChange="handleTabChange" />
 		<!-- 简介页面 -->
-		<view v-show="currentTab === 'abstracts'" style="padding: 15rpx 15rpx 0rpx 15rpx;">
-			<!-- 作者信息 -->
-			<view class="user-info">
-				<view style="position:relative;min-width:350rpx;">
-					<image class="avatar" :src="user.avatar" />
-					<text class="username">{{ videoData.username }}</text>
-					<text class="userfans">{{ format(user.fans) }}粉丝 {{ user.videonum}}视频</text>
-				</view>
-				<view class="attent-button">+ 关注</view>
-			</view>
-			<!-- 视频信息 采用折叠面板-->
-			<uni-collapse style="padding-top: 10rpx; padding-bottom: 10rpx; max-width: 96%;">
-				<uni-collapse-item title-border="none" :border="false">
-					<!-- 使用插槽实现自定义标题面板 -->
-					<template v-slot:title>
-						<view class="video-title">{{ videoData.title }}</view>
-						<view style="display:flex;justify-content: flex-start;align-items: center;margin:10rpx 0rpx;">
-							<image src="@/static/views_gray.svg" class="stats-icon"></image>
-							<text class="views_barrages">{{ format(videoData.views) }}</text>
-							<image src="@/static/barrages_gray.svg" class="stats-icon"></image>
-							<text class="views_barrages">{{ format(videoData.barrages) }}</text>
-							<text class="views_barrages">{{ videoComplement.releasetime }}</text>
-						</view>
-					</template>
-					<!-- 隐藏面板 -->
-					<text style="color: #69686d;font-size: 26rpx;">{{ videoComplement.abstracts }}</text>
-					<view style="display: flex; gap: 20rpx; flex-wrap: wrap;margin-top: 15rpx;">
-						<text class="tag" v-for="tag in videoComplement.tags">{{ tag }}</text>
+		<scroll-view scroll-y style="height: 995rpx;">
+			<view v-show="currentTab === 'abstracts'" style="padding: 15rpx 15rpx 0rpx 15rpx;">
+				<!-- 作者信息 -->
+				<view class="user-info" @click="onVideoClick">
+					<view style="position:relative;min-width:350rpx;">
+						<image class="avatar" :src="user.avatar" />
+						<text class="username">{{ videoData.username }}</text>
+						<text class="userfans">{{ format(user.fans) }}粉丝 {{ user.videonum}}视频</text>
 					</view>
-				</uni-collapse-item>
-			</uni-collapse>
-			<!-- 点赞、收藏、分享 -->
-			<view class="actions">
-				<view class="action-item" @click="toggleLike">
-					<uni-icons :type="action.liked ? 'hand-up-filled' : 'hand-up'" size="66rpx;"></uni-icons>
-					<view class="likes">{{ format(videoComplement.likes) }}</view>
+					<view class="attent-button">+ 关注</view>
 				</view>
-				<view class="action-item" @click="toggleCollect">
-					<uni-icons :type="action.collected ? 'star-filled' : 'star'" size="66rpx;"></uni-icons>
-					<text class="likes">{{ format(videoComplement.collections) }}</text>
+				<!-- 视频信息 采用折叠面板-->
+				<uni-collapse style="padding-top: 10rpx; padding-bottom: 10rpx; max-width: 96%;">
+					<uni-collapse-item title-border="none" :border="false">
+						<!-- 使用插槽实现自定义标题面板 -->
+						<template v-slot:title>
+							<view class="video-title">{{ videoData.title }}</view>
+							<view
+								style="display:flex;justify-content: flex-start;align-items: center;margin:10rpx 0rpx;">
+								<image src="@/static/views_gray.svg" class="stats-icon"></image>
+								<text class="views_barrages">{{ format(videoData.views) }}</text>
+								<image src="@/static/barrages_gray.svg" class="stats-icon"></image>
+								<text class="views_barrages">{{ format(videoData.barrages) }}</text>
+								<text class="views_barrages">{{ videoComplement.releasetime }}</text>
+							</view>
+						</template>
+						<!-- 隐藏面板 -->
+						<text style="color: #69686d;font-size: 26rpx;">{{ videoComplement.abstracts }}</text>
+						<view style="display: flex; gap: 20rpx; flex-wrap: wrap;margin-top: 15rpx;">
+							<text class="tag" v-for="tag in videoComplement.tags">{{ tag }}</text>
+						</view>
+					</uni-collapse-item>
+				</uni-collapse>
+				<!-- 点赞、收藏、分享 -->
+				<view class="actions">
+					<view class="action-item" @click="toggleLike">
+						<uni-icons :type="action.liked ? 'hand-up-filled' : 'hand-up'" size="66rpx;"></uni-icons>
+						<view class="likes">{{ format(videoComplement.likes) }}</view>
+					</view>
+					<view class="action-item" @click="toggleCollect">
+						<uni-icons :type="action.collected ? 'star-filled' : 'star'" size="66rpx;"></uni-icons>
+						<text class="likes">{{ format(videoComplement.collections) }}</text>
+					</view>
+					<view class="action-item" @click="toggleShare">
+						<uni-icons :type="action.shared ? 'redo-filled' : 'redo'" size="66rpx;"></uni-icons>
+						<text class="likes">{{ format(videoComplement.forwards) }}</text>
+					</view>
 				</view>
-				<view class="action-item" @click="toggleShare">
-					<uni-icons :type="action.shared ? 'redo-filled' : 'redo'" size="66rpx;"></uni-icons>
-					<text class="likes">{{ format(videoComplement.forwards) }}</text>
+				<!-- 相关视频推荐 -->
+				<RelatedVideos :related-videos="relatedVideos" />
+			</view>
+			<!-- 评论区页面 -->
+			<view v-show="currentTab === 'comments'" class="comments-section">
+				<text class="section-title">评论</text>
+				<view v-for="comment in comments" :key="comment.id" class="comment-item">
+					<text class="comment-author">{{ comment.author }}:</text>
+					<text class="comment-content">{{ comment.content }}</text>
 				</view>
 			</view>
-			<!-- 相关视频推荐 -->
-			<RelatedVideos :related-videos="relatedVideos" />
-		</view>
-		<!-- 评论区页面 -->
-		<view v-show="currentTab === 'comments'" class="comments-section">
-			<text class="section-title">评论</text>
-			<view v-for="comment in comments" :key="comment.id" class="comment-item">
-				<text class="comment-author">{{ comment.author }}:</text>
-				<text class="comment-content">{{ comment.content }}</text>
-			</view>
-		</view>
-
+		</scroll-view>
 	</view>
 </template>
 
 <script>
 	import {
 		API_BASE_URL
+	} from '@/config/api.js';
+	import {
+		API_RESOURCES_URL
 	} from '@/config/api.js';
 	import NavTabs from '@/components/nav-tabs.vue'
 	import RelatedVideos from '@/components/related-videos.vue'
@@ -92,6 +100,7 @@
 		},
 		data() {
 			return {
+				showControls: true,
 				currentTab: "abstracts",
 				videoid: null,
 				videoData: {},
@@ -173,6 +182,78 @@
 						barrages: 3230,
 						time: '0:15',
 						username: '芝士阿毛'
+					},
+					{
+						videoid: 13,
+						title: "我看到的和我画的",
+						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+						views: 1169,
+						barrages: 5,
+						time: '1:07',
+						username: 'MORNCOLOUR'
+					},
+					{
+						videoid: 14,
+						title: "128秒看完《哪吒2》",
+						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+						views: 628000,
+						barrages: 592,
+						time: '2:08',
+						username: '神奇的大智'
+					},
+					{
+						videoid: 15,
+						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+						views: 160000,
+						barrages: 3230,
+						time: '0:15',
+						username: '芝士阿毛'
+					},
+					{
+						videoid: 16,
+						title: "我看到的和我画的",
+						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+						views: 449000,
+						barrages: 242,
+						time: '1:07',
+						username: 'MORNCOLOUR'
+					},
+					{
+						videoid: 17,
+						title: "128秒看完《哪吒2》",
+						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+						views: 628000,
+						barrages: 592,
+						time: '2:08',
+						username: '神奇的大智'
+					},
+					{
+						videoid: 18,
+						title: "我看到的和我画的",
+						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
+						views: 1169,
+						barrages: 5,
+						time: '1:07',
+						username: 'MORNCOLOUR'
+					},
+					{
+						videoid: 19,
+						title: "128秒看完《哪吒2》",
+						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+						views: 628000,
+						barrages: 592,
+						time: '2:08',
+						username: '神奇的大智'
+					},
+					{
+						videoid: 20,
+						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
+						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+						views: 160000,
+						barrages: 3230,
+						time: '0:15',
+						username: '芝士阿毛'
 					}
 				],
 				user: {
@@ -181,7 +262,33 @@
 					avatar: "/static/avatar.jpg",
 					fans: 53000,
 					videonum: 108
+				},
+				barrages: [{
+						key: 'fctc651a9pm2j20bia8j',
+						time: 1,
+						text: '这是新增的一条弹幕',
+					},
+					{
+						key: 'fctc651a9pm2j20bia8q',
+						time: 1,
+						text: '这是新增的一条弹幕',
+						fontSize: 16,
+						color: '#0ff'
+					},
+					{
+						key: 'fctc651a9pm2j20bi8jw',
+						time: 3,
+						text: '这是第3秒的弹幕',
+						color: '#ccc'
+					}
+				],
+				barrageConfig: {
+					speed: 100,
+					defaultColor: '#000000',
+					fontSize: 20,
+					textShadowBlur: 0
 				}
+
 
 			}
 		},
@@ -202,6 +309,10 @@
 			this.videoid = options.videoid;
 			this.videoData = uni.getStorageSync('videoInfo') || {}; //先用本地数据渲染已有信息
 			this.fetchVideoComplement(); //再向服务器请求完整数据
+
+		},
+		onReady() {
+			this.videoContext = uni.createVideoContext('myVideo');
 		},
 		methods: {
 			handleTabChange(tab) {
@@ -251,7 +362,7 @@
 						let seconds = this.convert(date.getSeconds());
 						this.videoComplement.releasetime = year + "年" + month + "月" + day + "日" + " " + hours + ":" +
 							minutes + ":" + seconds; //拼接为 YYYY年M月D日 HH:MM:SS 格式
-						this.videoComplement.url = API_BASE_URL + this.videoComplement.url;
+						this.videoComplement.url = API_RESOURCES_URL + this.videoComplement.url;
 						console.log(this.videoComplement);
 					} else {
 						console.error('请求失败:', res);
@@ -270,30 +381,56 @@
 			},
 			back() {
 				uni.navigateBack();
+			},
+			fullscreenChange() { //全屏切换
+				this.showControls = !this.showControls;
 			}
+			// doubleSpeed() {
+			// 	let videoContext = uni.createVideoContext('myVideo', this);
+			// 	videoContext.playbackRate(1.5);
+			// 	console.log(1);
+			// },
+			// sendDanmu() {
+			// 	this.videoContext.sendDanmu({
+			// 		text: this.danmuValue,
+			// 		color: this.getRandomColor()
+			// 	});
+			// 	this.danmuValue = '';
+			// },
+			// videoErrorCallback: function(e) {
+			// 	uni.showModal({
+			// 		content: e.target.errMsg,
+			// 		showCancel: false
+			// 	})
+			// },
+			// getRandomColor: function() {
+			// 	const rgb = []
+			// 	for (let i = 0; i < 3; ++i) {
+			// 		let color = Math.floor(Math.random() * 256).toString(16)
+			// 		color = color.length == 1 ? '0' + color : color
+			// 		rgb.push(color)
+			// 	}
+			// 	return '#' + rgb.join('')
+			// }
+
+
+
 
 		}
 	}
 </script>
 
 <style>
-	.video-container {
+	.container {
 		display: flex;
 		flex-direction: column;
 		position: relative;
 	}
 
-	.video-player {
-		width: 100%;
-		border-radius: 8rpx;
-	}
-
 	.back-button {
 		position: absolute;
 		top: 20rpx;
-		left: 20rpx;
-		font-size: 70rpx;
-		color: #fff;
+		left: 30rpx;
 	}
 
 	.nav-tabs {
@@ -317,9 +454,6 @@
 		font-weight: bold;
 		border-bottom: 4rpx solid #fe58a4;
 	}
-
-
-
 
 	.user-info {
 		display: flex;
@@ -398,6 +532,7 @@
 		display: flex;
 		justify-content: space-around;
 		padding-bottom: 10rpx;
+		border-bottom: 2rpx #d5d5d5 solid;
 	}
 
 	.action-item {

@@ -10,6 +10,7 @@
 		<component :is="currentComponent" ref="currentComponentRef"></component>
 	</scroll-view>
 
+
 </template>
 
 <script>
@@ -120,7 +121,6 @@
 		display: flex;
 		flex-direction: column;
 		height: 1274rpx;
-		/* height:100%; */
 	}
 
 	.bottom-nav-tabs {

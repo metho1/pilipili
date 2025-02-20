@@ -13,13 +13,22 @@
 			<text class="search-btn" @click="search">搜索</text>
 		</view>
 		<!-- 筛选框 -->
-		<NavTabs :activeTab="currentTab" :tabs="tabs" @tabChange="handleTabChange" />
-		<!-- 视频搜索结果 -->
-		<view v-show="currentTab === 'videos'">
-			<RelatedVideos :related-videos="relatedVideos" />
-		</view>
-		<!-- 用户搜索结果 -->
-		<view v-show="currentTab === 'users'"></view>
+		<NavTabs :activeTab="currentTab" :tabs="tabs" @tabChange="handleTabChange"/>
+		<scroll-view scroll-y style="height: 1380rpx;">
+			<!-- 视频搜索结果 -->
+			<view v-show="currentTab === 'videos' || currentTab === 'filter'" style="position: relative;">
+				<view v-show="currentTab === 'filter'" class="filter">
+					<text style="font-size: 28rpx;">内容分区</text>
+					<view style="display: flex; gap: 20rpx; flex-wrap: wrap;margin:10rpx 0rpx;">
+						<text v-for="zone in zones" :class="['zone',currentZone === zone ? 'active' : '']"
+							@click="switchZone(zone)">{{ zone }}</text>
+					</view>
+				</view>
+				<RelatedVideos :related-videos="relatedVideos" />
+			</view>
+			<!-- 用户搜索结果 -->
+			<view v-show="currentTab === 'users'">1</view>
+		</scroll-view>
 	</view>
 </template>
 
@@ -43,12 +52,13 @@
 					{
 						text: "用户",
 						value: "users"
-					// },
-					// {
-					// 	text: '<image src="@/static/views_gray.svg"></image>',
-					// 	value: "filter"
+					},
+					{
+						value: "filter"
 					}
 				],
+				currentZone: "不限",
+				zones: ["不限", "生活", "美食", "游戏", "音乐", "时尚", "知识", "娱乐", "影视", "动画", "汽车", "动物圈", "科技", "运动", "鬼畜"],
 				relatedVideos: [{
 						videoid: 5,
 						title: "我看到的和我画的",
@@ -187,16 +197,15 @@
 			},
 			search() {
 				if (!this.searchText.trim()) return;
-				// if (!this.searchHistory.includes(this.searchText)) {
-				// 	this.searchHistory.unshift(this.searchText); // 添加新历史记录
-				// 	if (this.searchHistory.length > 10) this.searchHistory.pop(); // 只保存10条
-				// };
 				uni.navigateTo({
 					url: `/pages/search/searchResult?query=${this.searchText}`
 				});
 			},
 			handleTabChange(tab) {
 				this.currentTab = tab;
+			},
+			switchZone(zone) {
+				this.currentZone = zone;
 			}
 		}
 	}
@@ -235,5 +244,31 @@
 		color: #fe58a4;
 		font-size: 30rpx;
 		font-weight: bold;
+	}
+
+	.filter {
+		background-color: #fff;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		padding: 10rpx;
+		z-index: 999;
+	}
+
+	.zone {
+		width: 100rpx;
+		padding: 10rpx;
+		border-radius: 10rpx;
+		background-color: #f7f7f7;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		color: #69686d;
+		font-size: 24rpx;
+		white-space: nowrap;
+	}
+
+	.active {
+		color: #fe58a4;
 	}
 </style>
