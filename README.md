@@ -17,4 +17,4 @@
 ## 演示视频
 | 首页推荐视频列表 | 视频播放演示 |
 | --- | --- |
-|<video controls src="./展示/recommend.mp4" title="Title"></video>|<video controls src="./展示/video.mp4" title="Title"></video>|
+|![alt text](./展示/recommend.gif)|![alt text](./展示/video.gif)|
