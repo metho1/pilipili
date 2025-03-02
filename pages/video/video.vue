@@ -2,14 +2,6 @@
 	<StatusBar />
 	<view class="container">
 		<!-- 视频播放器 -->
-		<!-- 		<video id="myVideo" :src="videoComplement.url" class="video-player" autoplay controls danmu-btn enable-danmu
-			:danmu-list="danmuList" object-fit="fill" :title="videoData.title" vslide-gesture="true"
-			vslide-gesture-in-fullscreen="true">
-			<cover-view class="back-button" @click="back">
-				<</cover-view>
-					<cover-view style="position: absolute;top: 128rpx;right: 60rpx;"
-						@click="doubleSpeed">倍速</cover-view>
-		</video> -->
 		<yingbing-video :src="videoComplement.url" style="width: 100%;height: 450rpx;" autoplay preload="meta"
 			:title="videoData.title" @fullscreenChange="fullscreenChange" settings="barrage,playbackRate,mirror"
 			object-fit="contain" :barrages="barrages" barrageShow :barrage-config="barrageConfig">
@@ -91,12 +83,19 @@
 	import {
 		API_RESOURCES_URL
 	} from '@/config/api.js';
-	import NavTabs from '@/components/nav-tabs.vue'
-	import RelatedVideos from '@/components/related-videos.vue'
+	import { useUserStore } from '@/store/user';
+	import NavTabs from '@/components/nav-tabs.vue';
+	import RelatedVideos from '@/components/related-videos.vue';
 	export default {
 		components: {
 			NavTabs,
 			RelatedVideos
+		},
+		setup() {
+			const userStore = useUserStore(); // 提前初始化 Store
+			return {
+				userStore, // 将 userStore 暴露给模板和方法
+			};
 		},
 		data() {
 			return {
@@ -111,150 +110,7 @@
 					shared: false
 				},
 				comments: [],
-				relatedVideos: [{
-						videoid: 5,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 1169,
-						barrages: 5,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 6,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 7,
-						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						username: '芝士阿毛'
-					},
-					{
-						videoid: 8,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 449000,
-						barrages: 242,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 9,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 10,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 1169,
-						barrages: 5,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 11,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 12,
-						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						username: '芝士阿毛'
-					},
-					{
-						videoid: 13,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 1169,
-						barrages: 5,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 14,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 15,
-						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						username: '芝士阿毛'
-					},
-					{
-						videoid: 16,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 449000,
-						barrages: 242,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 17,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 18,
-						title: "我看到的和我画的",
-						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
-						views: 1169,
-						barrages: 5,
-						time: '1:07',
-						username: 'MORNCOLOUR'
-					},
-					{
-						videoid: 19,
-						title: "128秒看完《哪吒2》",
-						cover: "https://th.bing.com//th//id//OIF.wGKp55LBt8wSF8rHC2tGsg?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 628000,
-						barrages: 592,
-						time: '2:08',
-						username: '神奇的大智'
-					},
-					{
-						videoid: 20,
-						title: "今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！今年的新科状元居然是位女子！",
-						cover: "https://th.bing.com//th//id//OIP.ECINZWIzQunW4_8_pdbDuAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-						views: 160000,
-						barrages: 3230,
-						time: '0:15',
-						username: '芝士阿毛'
-					}
+				relatedVideos: [
 				],
 				user: {
 					// userid: 1, （已知）
@@ -263,25 +119,7 @@
 					fans: 53000,
 					videonum: 108
 				},
-				barrages: [{
-						key: 'fctc651a9pm2j20bia8j',
-						time: 1,
-						text: '这是新增的一条弹幕',
-					},
-					{
-						key: 'fctc651a9pm2j20bia8q',
-						time: 1,
-						text: '这是新增的一条弹幕',
-						fontSize: 16,
-						color: '#0ff'
-					},
-					{
-						key: 'fctc651a9pm2j20bi8jw',
-						time: 3,
-						text: '这是第3秒的弹幕',
-						color: '#ccc'
-					}
-				],
+				barrages: [],
 				barrageConfig: {
 					speed: 100,
 					defaultColor: '#000000',
@@ -308,7 +146,8 @@
 		onLoad(options) {
 			this.videoid = options.videoid;
 			this.videoData = uni.getStorageSync('videoInfo') || {}; //先用本地数据渲染已有信息
-			this.fetchVideoComplement(); //再向服务器请求完整数据
+			this.fetchVideoComplement(); //再向服务器请求完整视频数据
+			this.fetchBarrages();
 
 		},
 		onReady() {
@@ -346,6 +185,7 @@
 					const res = await uni.request({
 						url: API_BASE_URL + 'videoBuss/getVideo',
 						method: 'GET',
+						header: {token: this.userStore.token},
 						data: {
 							videoid: this.videoid
 						}
@@ -384,38 +224,36 @@
 			},
 			fullscreenChange() { //全屏切换
 				this.showControls = !this.showControls;
+			},
+			// 获取 videoComplement 数据
+			async fetchBarrages() {
+				try {
+					const res = await uni.request({
+						url: API_BASE_URL + 'barrageBuss/getBarrageList',
+						method: 'GET',
+						header: {token: this.userStore.token},
+						data: {
+							videoid: this.videoid
+						}
+					});
+					if (res.statusCode === 200) {
+						this.barrages = res.data; // 更新 videoComplement 数据
+						console.log(this.barrages.length);
+					} else {
+						console.error('请求失败:', res);
+						uni.showToast({
+							title: '数据加载失败',
+							icon: 'none'
+						});
+					}
+				} catch (error) {
+					console.error('网络请求错误:', error);
+					uni.showToast({
+						title: '网络请求失败',
+						icon: 'none'
+					});
+				}
 			}
-			// doubleSpeed() {
-			// 	let videoContext = uni.createVideoContext('myVideo', this);
-			// 	videoContext.playbackRate(1.5);
-			// 	console.log(1);
-			// },
-			// sendDanmu() {
-			// 	this.videoContext.sendDanmu({
-			// 		text: this.danmuValue,
-			// 		color: this.getRandomColor()
-			// 	});
-			// 	this.danmuValue = '';
-			// },
-			// videoErrorCallback: function(e) {
-			// 	uni.showModal({
-			// 		content: e.target.errMsg,
-			// 		showCancel: false
-			// 	})
-			// },
-			// getRandomColor: function() {
-			// 	const rgb = []
-			// 	for (let i = 0; i < 3; ++i) {
-			// 		let color = Math.floor(Math.random() * 256).toString(16)
-			// 		color = color.length == 1 ? '0' + color : color
-			// 		rgb.push(color)
-			// 	}
-			// 	return '#' + rgb.join('')
-			// }
-
-
-
-
 		}
 	}
 </script>

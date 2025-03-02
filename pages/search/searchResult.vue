@@ -20,7 +20,7 @@
 				<view v-show="currentTab === 'filter'" class="filter">
 					<text style="font-size: 28rpx;">内容分区</text>
 					<view style="display: flex; gap: 20rpx; flex-wrap: wrap;margin:10rpx 0rpx;">
-						<text v-for="zone in zones" :class="['zone',currentZone === zone ? 'active' : '']"
+						<text v-for="zone in zones" :key="zone" :class="['zone',currentZone === zone ? 'active' : '']"
 							@click="switchZone(zone)">{{ zone }}</text>
 					</view>
 				</view>
@@ -59,7 +59,116 @@
 				],
 				currentZone: "不限",
 				zones: ["不限", "生活", "美食", "游戏", "音乐", "时尚", "知识", "娱乐", "影视", "动画", "汽车", "动物圈", "科技", "运动", "鬼畜"],
-				relatedVideos: [{
+				relatedVideos: [
+				],
+			}
+		},
+		onLoad(options) {
+			this.searchText = options.query || ''; // 从 URL 参数中初始化 searchText
+		},
+		watch: {
+			// 监听 searchText 的变化
+			searchText: {
+				handler(newVal, oldVal) { //监听器的回调函数
+					if (this.debounceTimer) {
+						clearTimeout(this.debounceTimer); // 清除之前的计时器
+					}
+					this.debounceTimer = setTimeout(() => {
+						if (newVal === '') {
+							this.back(); // 在用户停止输入 300ms 后执行
+						}
+					}, 300); // 设置防抖时间为 300ms
+				},
+				immediate: true // 立即触发监听器
+			}
+		},
+		methods: {
+			back() {
+				const pages = getCurrentPages();
+				uni.navigateBack({
+					// url: '/pages/search/search'
+					delta: pages.length - 2
+				});
+			},
+			search() {
+				if (!this.searchText.trim()) return;
+				uni.navigateTo({
+					url: `/pages/search/searchResult?query=${this.searchText}`
+				});
+			},
+			handleTabChange(tab) {
+				this.currentTab = tab;
+			},
+			switchZone(zone) {
+				this.currentZone = zone;
+			}
+		}
+	}
+</script>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		padding: 20rpx;
+		position: relative;
+	}
+
+	.top-bar {
+		position: sticky;
+		top: 0;
+		background-color: #fff;
+		z-index: 999;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.search-bar {
+		width: 500rpx;
+		height: 60rpx;
+		border: 1rpx solid #69686d;
+		border-radius: 50rpx;
+		display: flex;
+		align-items: center;
+		padding-left: 15rpx;
+		position: relative;
+	}
+
+	.search-btn {
+		color: #fe58a4;
+		font-size: 30rpx;
+		font-weight: bold;
+	}
+
+	.filter {
+		background-color: #fff;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		padding: 10rpx;
+		z-index: 999;
+	}
+
+	.zone {
+		width: 100rpx;
+		padding: 10rpx;
+		border-radius: 10rpx;
+		background-color: #f7f7f7;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		color: #69686d;
+		font-size: 24rpx;
+		white-space: nowrap;
+	}
+
+	.active {
+		color: #fe58a4;
+	}
+</style>
+
+{
 						videoid: 5,
 						title: "我看到的和我画的",
 						cover: "https://n.sinaimg.cn//sinakd20122//121//w1441h1080//20200519//7d3b-itvqcca5339779.jpg",
@@ -167,108 +276,3 @@
 						time: '0:15',
 						username: '芝士阿毛'
 					}
-				],
-			}
-		},
-		onLoad(options) {
-			this.searchText = options.query || ''; // 从 URL 参数中初始化 searchText
-		},
-		watch: {
-			// 监听 searchText 的变化
-			searchText: {
-				handler(newVal, oldVal) { //监听器的回调函数
-					if (this.debounceTimer) {
-						clearTimeout(this.debounceTimer); // 清除之前的计时器
-					}
-					this.debounceTimer = setTimeout(() => {
-						if (newVal === '') {
-							this.back(); // 在用户停止输入 300ms 后执行
-						}
-					}, 300); // 设置防抖时间为 300ms
-				},
-				immediate: true // 立即触发监听器
-			}
-		},
-		methods: {
-			back() {
-				uni.redirectTo({
-					url: '/pages/search/search'
-				});
-			},
-			search() {
-				if (!this.searchText.trim()) return;
-				uni.navigateTo({
-					url: `/pages/search/searchResult?query=${this.searchText}`
-				});
-			},
-			handleTabChange(tab) {
-				this.currentTab = tab;
-			},
-			switchZone(zone) {
-				this.currentZone = zone;
-			}
-		}
-	}
-</script>
-
-<style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		padding: 20rpx;
-		position: relative;
-	}
-
-	.top-bar {
-		position: sticky;
-		top: 0;
-		background-color: #fff;
-		z-index: 999;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-	}
-
-	.search-bar {
-		width: 500rpx;
-		height: 60rpx;
-		border: 1rpx solid #69686d;
-		border-radius: 50rpx;
-		display: flex;
-		align-items: center;
-		padding-left: 15rpx;
-		position: relative;
-	}
-
-	.search-btn {
-		color: #fe58a4;
-		font-size: 30rpx;
-		font-weight: bold;
-	}
-
-	.filter {
-		background-color: #fff;
-		position: sticky;
-		top: 0;
-		width: 100%;
-		padding: 10rpx;
-		z-index: 999;
-	}
-
-	.zone {
-		width: 100rpx;
-		padding: 10rpx;
-		border-radius: 10rpx;
-		background-color: #f7f7f7;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		color: #69686d;
-		font-size: 24rpx;
-		white-space: nowrap;
-	}
-
-	.active {
-		color: #fe58a4;
-	}
-</style>

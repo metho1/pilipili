@@ -21,7 +21,7 @@
 				<uni-icons type="trash" size="38rpx;" color="#69686d" @click="clearHistory"></uni-icons>
 			</view>
 			<view class="history-tags">
-				<text v-for="item in searchHistory" class="tag" @click="searchFromHistory(item)">
+				<text v-for="item in searchHistory" :key="item" class="tag" @click="searchFromHistory(item)">
 					{{ item }}
 				</text>
 			</view>
@@ -39,7 +39,14 @@
 
 <script>
 	import { API_BASE_URL } from '@/config/api.js';
+	import { useUserStore } from '@/store/user';
 	export default {
+		setup() {
+			const userStore = useUserStore(); // 提前初始化 Store
+			return {
+				userStore, // 将 userStore 暴露给模板和方法
+			};
+		},
 		data() {
 			return {
 				searchText: '', // 搜索框输入
@@ -88,7 +95,8 @@
 				try {
 					const res = await uni.request({
 						url: API_BASE_URL+'hotSearchBuss/hotSearch', // 替换为实际的后端接口地址
-						method: 'GET'
+						method: 'GET',
+						header: {token: this.userStore.token}
 					});
 					if (res.statusCode === 200) {
 						this.hotSearchList = res.data; // 更新热搜列表

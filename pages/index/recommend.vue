@@ -1,33 +1,36 @@
 <!-- 推荐页面 -->
 <template>
-	<!-- 轮播图 -->
-	<uni-card margin="8rpx" padding="0rpx" spacing="0rpx">
-		<swiper style="height: 400rpx;" circular autoplay :interval="2000" indicator-dots indicator-active-color="#fff">
-			<swiper-item v-for="(item, index) in banners" :key="index">
-				<view class="swiper-item">
-					<image :src="item.url" class="banner-image" lazy-load="true"></image>
-					<view class="text-overlay">{{ item.content }}</view>
+	<view>
+		<!-- 轮播图 -->
+		<uni-card margin="8rpx" padding="0rpx" spacing="0rpx">
+			<swiper style="height: 400rpx;" circular autoplay :interval="2000" indicator-dots
+				indicator-active-color="#fff">
+				<swiper-item v-for="(item, index) in banners" :key="index">
+					<view class="swiper-item">
+						<image :src="item.url" class="banner-image" lazy-load="true"></image>
+						<view class="text-overlay">{{ item.content }}</view>
+					</view>
+				</swiper-item>
+			</swiper>
+		</uni-card>
+		<!-- 视频列表 -->
+		<view class="video-container">
+			<view v-for="video in videos" :key="video.videoid" class="video-item" @click="gotoVideo(video)">
+				<view class="video-image-container">
+					<image :src="video.cover" class="video-image" lazy-load="true"></image>
+					<view class="video-time">{{ video.time }}</view>
+					<view class="video-stats">
+						<image src="@/static/views.svg" class="stats-icon" lazy-load="true"></image>
+						<text class="views_barrages">{{ format(video.views) }}</text>
+						<image src="@/static/barrages.svg" class="stats-icon" lazy-load="true"></image>
+						<text class="views_barrages">{{ format(video.barrages) }}</text>
+					</view>
 				</view>
-			</swiper-item>
-		</swiper>
-	</uni-card>
-	<!-- 视频列表 -->
-	<view class="video-container">
-		<view v-for="video in videos" :key="video.videoid" class="video-item" @click="gotoVideo(video)">
-			<view class="video-image-container">
-				<image :src="video.cover" class="video-image" lazy-load="true"></image>
-				<view class="video-time">{{ video.time }}</view>
-				<view class="video-stats">
-					<image src="@/static/views.svg" class="stats-icon" lazy-load="true"></image>
-					<text class="views_barrages">{{ format(video.views) }}</text>
-					<image src="@/static/barrages.svg" class="stats-icon" lazy-load="true"></image>
-					<text class="views_barrages">{{ format(video.barrages) }}</text>
-				</view>
-			</view>
-			<view style="padding: 10rpx 15rpx;">
-				<view class="video-title">{{ video.title }}</view>
-				<view class="video-uploader"><uni-icons type="person"
-						size="30rpx"></uni-icons>&nbsp;{{ video.username }}
+				<view style="padding: 10rpx 15rpx;">
+					<view class="video-title">{{ video.title }}</view>
+					<view class="video-uploader"><uni-icons type="person"
+							size="30rpx"></uni-icons>&nbsp;{{ video.username }}
+					</view>
 				</view>
 			</view>
 		</view>
@@ -38,9 +41,20 @@
 	import {
 		API_BASE_URL
 	} from '@/config/api.js';
-	import { API_RESOURCES_URL } from '@/config/api.js';
+	import {
+		API_RESOURCES_URL
+	} from '@/config/api.js';
+	import {
+		useUserStore
+	} from '@/store/user';
 	export default {
 		name: 'Recommend',
+		setup() {
+			const userStore = useUserStore(); // 提前初始化 Store
+			return {
+				userStore, // 将 userStore 暴露给模板和方法
+			};
+		},
 		data() {
 			return {
 				page: 0,
@@ -73,6 +87,9 @@
 					const res = await uni.request({
 						url: API_BASE_URL + 'videoBuss/getVideoList',
 						method: 'GET',
+						header: {
+							token: this.userStore.token
+						},
 						data: {
 							page: this.page
 						}

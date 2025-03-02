@@ -18,6 +18,7 @@
 			activeTab: String ,//父组件传递当前选中的tab值
 			tabs: Array
 		},
+		emits:['tabChange'],
 		data() {
 			return {
 

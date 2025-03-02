@@ -13,12 +13,18 @@ app.$mount()
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
+// import store from './store'
+import * as Pinia from 'pinia'
+// import Vuex from "vuex"
 import StatusBar from "@/components/status-bar.vue"
 export function createApp() {
   const app = createSSRApp(App)
+  // app.use(store)
+  app.use(Pinia.createPinia())
   app.component('StatusBar',StatusBar) //调用app.component方法全局注册组件
   return {
-    app
+    app,
+	Pinia
   }
 }
 // #endif

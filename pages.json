@@ -7,6 +7,18 @@
 			}
 		},
 		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/profile/profile",
 			"style": {
 				"navigationStyle": "custom"
@@ -26,16 +38,14 @@
 			}
 		},
 		{
-			"path" : "pages/search/search",
-			"style" : 
-			{
+			"path": "pages/search/search",
+			"style": {
 				"navigationStyle": "custom"
 			}
 		},
 		{
-			"path" : "pages/search/searchResult",
-			"style" : 
-			{
+			"path": "pages/search/searchResult",
+			"style": {
 				"navigationStyle": "custom"
 			}
 		}
